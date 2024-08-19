@@ -84,4 +84,29 @@ main {
     .header-container {
         padding-top: 164px;
     }
+    
+    .mobile-top-header-container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    header .navbar {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    header .navbar-toggler {
+        margin-right: 15px;
+    }
+
+    header .mobile-top-header-container .list-inline-item {
+        margin-right: 10px;
+        padding-top: 15px;
+    }
+
+    header .mobile-top-header-container .list-inline-item:last-child {
+        margin-right: 0;
+    }
 }
