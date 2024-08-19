@@ -1,0 +1,87 @@
+:root {
+    --main-text-color: #555;
+    --primary-bg-color: #000;
+    --secondary-bg-color: #222;
+    --primary-text-color: #fff;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background: url('/media/splash.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: var(--main-text-color);
+    font-family: var(--bs-body-font-family);  /* Using Bootstrap's default font */
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.logo-font {
+    text-transform: uppercase;
+}
+
+.main-logo-link {
+    width: fit-content;
+}
+
+.shop-now-button {
+    background-color: #c7c7c7;
+    color: #000;
+    min-width: 260px;
+    transition: #fff 0.3s ease;
+}
+
+.shop-now-button:hover,
+.shop-now-button:active,
+.shop-now-button:focus {
+    background-color: #fff;
+    color: #000;
+}
+
+.btn-black {
+    background-color: var(--primary-bg-color);
+    color: var(--primary-text-color);
+    transition: background-color 0.3s ease;
+}
+
+.btn-black:hover,
+.btn-black:active,
+.btn-black:focus {
+    background-color: var(--secondary-bg-color);
+    color: var(--primary-text-color);
+}
+
+.text-black {
+    color: var(--primary-bg-color) !important;
+}
+
+.border-black {
+    border: 1px solid var(--primary-bg-color) !important;
+}
+
+/* Media Queries */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 80%;
+    }
+}
+
+@media (min-width: 992px) {
+    .fixed-top-desktop-only {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1030;
+    }
+
+    .header-container {
+        padding-top: 164px;
+    }
+}
