@@ -1,0 +1,873 @@
+[
+    {
+      "pk": 1,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5001",
+        "name": "Fresh Organic Almond",
+        "description": "Crunchy and nutritious almonds, perfect for snacking or baking.\nSize: 250g pack",
+        "price": 4.99,
+        "category": 2,
+        "rating": 4.7,
+        "image_url": "almond.jpg"
+      }
+    },
+    {
+      "pk": 2,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5002",
+        "name": "Crispy Bacon Strips",
+        "description": "Premium quality bacon strips for a delicious breakfast or recipe ingredient.\nSize: 200g pack",
+        "price": 3.99,
+        "category": 1,
+        "rating": 4.9,
+        "image_url": "bacon.jpg"
+      }
+    },
+    {
+      "pk": 3,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5003",
+        "name": "Ripe Yellow Banana",
+        "description": "Sweet and creamy bananas, perfect for snacking or smoothies.\nSize: Bunch of 5-6 bananas",
+        "price": 1.99,
+        "category": 2,
+        "rating": 4.5,
+        "image_url": "banana.jpg"
+      }
+    },
+    {
+      "pk": 4,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5004",
+        "name": "Blue Edge Dinner Plates Set",
+        "description": "Elegant dinner plates with a stylish blue edge, perfect for everyday use or special occasions.\nSize: Set of 4, 10-inch diameter\nMaterials: Porcelain",
+        "price": 29.99,
+        "category": 7,
+        "rating": 4.8,
+        "image_url": "blue_edge_plates.jpg"
+      }
+    },
+    {
+      "pk": 5,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5005",
+        "name": "Freshly Baked Bread Roll",
+        "description": "Soft and fluffy bread rolls, ideal for sandwiches or as a side to soups and salads.\nSize: Pack of 6",
+        "price": 2.99,
+        "category": 4,
+        "rating": 4.6,
+        "image_url": "breadroll.jpg"
+      }
+    },
+    {
+      "pk": 6,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5006",
+        "name": "Buttery Brioche Loaf",
+        "description": "Rich and indulgent brioche bread, perfect for French toast or gourmet sandwiches.\nSize: 400g loaf",
+        "price": 4.49,
+        "category": 4,
+        "rating": 4.8,
+        "image_url": "brioche.jpg"
+      }
+    },
+    {
+      "pk": 7,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5007",
+        "name": "Fresh Broccoli Florets",
+        "description": "Crisp and nutritious broccoli florets, ideal for steaming or stir-frying.\nSize: 300g pack",
+        "price": 2.49,
+        "category": 2,
+        "rating": 4.3,
+        "image_url": "broccoli.jpg"
+      }
+    },
+    {
+      "pk": 8,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5008",
+        "name": "Professional Carving Knife",
+        "description": "Sharp and precise carving knife for effortless meat slicing.\nSize: 8-inch blade\nMaterials: High-carbon stainless steel blade, ergonomic handle",
+        "price": 39.99,
+        "category": 6,
+        "rating": 4.9,
+        "image_url": "carving_knife.jpg"
+      }
+    },
+    {
+      "pk": 9,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5009",
+        "name": "Free-Range Whole Chicken",
+        "description": "Premium quality, free-range whole chicken for roasting or grilling.\nSize: Approx. 1.5kg",
+        "price": 7.99,
+        "category": 1,
+        "rating": 4.7,
+        "image_url": "chicken.jpg"
+      }
+    },
+    {
+      "pk": 10,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5010",
+        "name": "Fresh Whole Coconut",
+        "description": "Tropical whole coconut, perfect for fresh coconut water and meat.\nSize: One medium coconut",
+        "price": 3.49,
+        "category": 2,
+        "rating": 4.2,
+        "image_url": "coconut.jpg"
+      }
+    },
+    {
+      "pk": 11,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5011",
+        "name": "Gourmet Coffee Beans",
+        "description": "Premium roasted coffee beans for a rich and aromatic brew.\nSize: 250g bag",
+        "price": 8.99,
+        "category": 9,
+        "rating": 4.8,
+        "image_url": "coffee.jpg"
+      }
+    },
+    {
+      "pk": 12,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5012",
+        "name": "Elegant Coffee Cup Set",
+        "description": "Stylish coffee cups for your morning brew or afternoon tea.\nSize: Set of 4, 8oz each\nMaterials: Fine bone china",
+        "price": 24.99,
+        "category": 7,
+        "rating": 4.6,
+        "image_url": "coffee_cups.jpg"
+      }
+    },
+    {
+      "pk": 13,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5013",
+        "name": "Homestyle Chocolate Chip Cookies",
+        "description": "Delicious, freshly baked chocolate chip cookies for a sweet treat.\nSize: Pack of 12",
+        "price": 3.99,
+        "category": 4,
+        "rating": 4.7,
+        "image_url": "cookie.jpg"
+      }
+    },
+    {
+      "pk": 14,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5014",
+        "name": "Professional Copper Pan Set",
+        "description": "High-quality copper pan set for superior heat conductivity and cooking performance.\nSize: Set of 3 (8\", 10\", 12\")\nMaterials: Copper exterior, stainless steel interior",
+        "price": 199.99,
+        "category": 5,
+        "rating": 4.9,
+        "image_url": "copper_pan_set.jpg"
+      }
+    },
+    {
+      "pk": 15,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5015",
+        "name": "Buttery Croissant",
+        "description": "Flaky and buttery croissants, perfect for breakfast or as a snack.\nSize: Pack of 4",
+        "price": 3.49,
+        "category": 4,
+        "rating": 4.8,
+        "image_url": "croissant.jpg"
+      }
+    },
+    {
+      "pk": 16,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5016",
+        "name": "Gourmet Cupcake Assortment",
+        "description": "Delightful assortment of freshly baked cupcakes in various flavors.\nSize: Box of 6",
+        "price": 9.99,
+        "category": 4,
+        "rating": 4.7,
+        "image_url": "cupcake.jpg"
+      }
+    },
+    {
+      "pk": 17,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5017",
+        "name": "Elegant Dessert Spoons Set",
+        "description": "Sleek and stylish dessert spoons for your sweet treats.\nSize: Set of 6\nMaterials: Stainless steel",
+        "price": 14.99,
+        "category": 7,
+        "rating": 4.5,
+        "image_url": "cutlery_dessert_spoons.jpg"
+      }
+    },
+    {
+      "pk": 18,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5018",
+        "name": "Modern Dinner Forks Set",
+        "description": "Contemporary dinner forks for everyday dining or special occasions.\nSize: Set of 6\nMaterials: Stainless steel",
+        "price": 16.99,
+        "category": 7,
+        "rating": 4.6,
+        "image_url": "cutlery_forks.jpg"
+      }
+    },
+    {
+      "pk": 19,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5019",
+        "name": "Classic Dinner Knives Set",
+        "description": "Timeless dinner knives for a complete table setting.\nSize: Set of 6\nMaterials: Stainless steel",
+        "price": 17.99,
+        "category": 7,
+        "rating": 4.7,
+        "image_url": "cutlery_knives.jpg"
+      }
+    },
+    {
+      "pk": 20,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5020",
+        "name": "Complete Cutlery Set",
+        "description": "Comprehensive cutlery set for all your dining needs.\nSize: 24-piece set (service for 6)\nMaterials: Stainless steel",
+        "price": 59.99,
+        "category": 7,
+        "rating": 4.8,
+        "image_url": "cutlery_set.jpg"
+      }
+    },
+    {
+      "pk": 21,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5021",
+        "name": "Glazed Doughnut",
+        "description": "Soft and sweet glazed doughnut for a delicious treat.\nSize: Pack of 4",
+        "price": 2.99,
+        "category": 4,
+        "rating": 4.5,
+        "image_url": "doughnut.jpg"
+      }
+    },
+    {
+      "pk": 22,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5022",
+        "name": "Farm Fresh Eggs",
+        "description": "High-quality, farm-fresh eggs for cooking and baking.\nSize: Dozen (12 eggs)",
+        "price": 3.49,
+        "category": 3,
+        "rating": 4.8,
+        "image_url": "egg.jpg"
+      }
+    },
+    {
+      "pk": 23,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5023",
+        "name": "Ripe Fig",
+        "description": "Sweet and juicy figs, perfect for snacking or cooking.\nSize: Pack of 6",
+        "price": 4.99,
+        "category": 2,
+        "rating": 4.3,
+        "image_url": "fig.jpg"
+      }
+    },
+    {
+      "pk": 24,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5024",
+        "name": "Fresh Grapefruit",
+        "description": "Tangy and refreshing grapefruit for a healthy breakfast or snack.\nSize: 2 large grapefruits",
+        "price": 2.49,
+        "category": 2,
+        "rating": 4.4,
+        "image_url": "grapefruit.jpg"
+      }
+    },
+    {
+      "pk": 25,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5025",
+        "name": "Stainless Steel Box Grater",
+        "description": "Versatile box grater for all your grating needs.\nSize: 4-sided grater\nMaterials: Stainless steel",
+        "price": 12.99,
+        "category": 6,
+        "rating": 4.6,
+        "image_url": "grater.jpg"
+      }
+    },
+    {
+      "pk": 26,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5026",
+        "name": "Fresh Green Grapes",
+        "description": "Sweet and crisp green grapes, perfect for snacking or fruit salads.\nSize: 500g bunch",
+        "price": 3.99,
+        "category": 2,
+        "rating": 4.7,
+        "image_url": "green_grape.jpg"
+      }
+    },
+    {
+      "pk": 27,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5027",
+        "name": "Healthy Green Smoothie",
+        "description": "Nutrient-packed green smoothie for a refreshing and healthy drink.\nSize: 16oz bottle",
+        "price": 4.99,
+        "category": 9,
+        "rating": 4.5,
+        "image_url": "green_smoothie.jpg"
+      }
+    },
+    {
+      "pk": 28,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5028",
+        "name": "Creamy Vanilla Ice Cream",
+        "description": "Rich and creamy vanilla ice cream for a classic dessert.\nSize: 500ml tub",
+        "price": 4.49,
+        "category": 3,
+        "rating": 4.8,
+        "image_url": "icecream.jpg"
+      }
+    },
+    {
+      "pk": 29,
+      "model": "products.product",
+      "fields": {
+        "sku": "fs5029",
+        "name": "Fresh Kiwi Fruit",
+        "description": "Tangy and sweet kiwi fruit, packed with vitamins.\nSize: Pack of 4",
+        "price": 2.99,
+        "category": 2,
+        "rating": 4.4,
+        "image_url": "kiwi.jpg"
+      }
+    },
+    {
+        "pk": 30,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5030",
+          "name": "Professional Knife Set",
+          "description": "Comprehensive knife set for all your culinary needs.\nSize: 6-piece set\nMaterials: High-carbon stainless steel blades, ergonomic handles",
+          "price": 89.99,
+          "category": 6,
+          "rating": 4.9,
+          "image_url": "knife_set.jpg"
+        }
+      },
+      {
+        "pk": 31,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5031",
+          "name": "Fresh Lemon",
+          "description": "Zesty and juicy lemons for cooking, baking, or garnishing.\nSize: Pack of 4",
+          "price": 1.99,
+          "category": 2,
+          "rating": 4.6,
+          "image_url": "lemon.jpg"
+        }
+      },
+      {
+        "pk": 32,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5032",
+          "name": "Exotic Lychee Fruit",
+          "description": "Sweet and fragrant lychees for a tropical treat.\nSize: 250g pack",
+          "price": 4.99,
+          "category": 2,
+          "rating": 4.3,
+          "image_url": "lychee.jpg"
+        }
+      },
+      {
+        "pk": 33,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5033",
+          "name": "Delicate French Macarons",
+          "description": "Assorted flavors of delicate French macarons for a luxurious dessert.\nSize: Box of 12",
+          "price": 14.99,
+          "category": 4,
+          "rating": 4.8,
+          "image_url": "macaron.jpg"
+        }
+      },
+      {
+        "pk": 34,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5034",
+          "name": "Stainless Steel Milk Saucepan",
+          "description": "High-quality milk saucepan for perfect heating and frothing.\nSize: 1-liter capacity\nMaterials: Stainless steel",
+          "price": 24.99,
+          "category": 5,
+          "rating": 4.7,
+          "image_url": "milk_saucepan.jpg"
+        }
+      },
+      {
+        "pk": 35,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5035",
+          "name": "Fresh Mixed Berries",
+          "description": "Assortment of fresh, seasonal berries for snacking or desserts.\nSize: 300g pack",
+          "price": 5.99,
+          "category": 2,
+          "rating": 4.6,
+          "image_url": "mixed_berries.jpg"
+        }
+      },
+      {
+        "pk": 36,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5036",
+          "name": "Non-Stick Frying Pan",
+          "description": "Durable non-stick frying pan for easy cooking and cleaning.\nSize: 10-inch diameter\nMaterials: Aluminum with non-stick coating",
+          "price": 29.99,
+          "category": 5,
+          "rating": 4.8,
+          "image_url": "nonstick_pan.jpg"
+        }
+      },
+      {
+        "pk": 37,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5037",
+          "name": "Fresh Red Onion",
+          "description": "Crisp and flavorful red onions for salads and cooking.\nSize: Pack of 3",
+          "price": 1.49,
+          "category": 2,
+          "rating": 4.5,
+          "image_url": "onion.jpg"
+        }
+      },
+      {
+        "pk": 38,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5038",
+          "name": "Stainless Steel Cookware Set",
+          "description": "Comprehensive cookware set for all your cooking needs.\nSize: 10-piece set\nMaterials: Stainless steel with glass lids",
+          "price": 159.99,
+          "category": 5,
+          "rating": 4.9,
+          "image_url": "pan_set.jpg"
+        }
+      },
+      {
+        "pk": 39,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5039",
+          "name": "Fluffy Pancakes",
+          "description": "Light and fluffy pancakes, perfect for breakfast or brunch.\nSize: Pack of 6",
+          "price": 3.99,
+          "category": 4,
+          "rating": 4.7,
+          "image_url": "pancakes.jpg"
+        }
+      },
+      {
+        "pk": 40,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5040",
+          "name": "Dried Pasta Assortment",
+          "description": "Variety pack of high-quality dried pasta shapes.\nSize: 1kg assorted pack",
+          "price": 4.99,
+          "category": 4,
+          "rating": 4.6,
+          "image_url": "pasta.jpg"
+        }
+      },
+      {
+        "pk": 41,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5041",
+          "name": "Roasted Peanuts",
+          "description": "Crunchy roasted peanuts, perfect for snacking or cooking.\nSize: 500g bag",
+          "price": 3.49,
+          "category": 2,
+          "rating": 4.5,
+          "image_url": "peanut.jpg"
+        }
+      },
+      {
+        "pk": 42,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5042",
+          "name": "Fresh Bell Pepper",
+          "description": "Crisp and colorful bell peppers for salads or cooking.\nSize: Pack of 3 (red, yellow, green)",
+          "price": 2.99,
+          "category": 2,
+          "rating": 4.4,
+          "image_url": "pepper.jpg"
+        }
+      },
+      {
+        "pk": 43,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5043",
+          "name": "Granite Pestle and Mortar",
+          "description": "Traditional pestle and mortar for grinding spices and herbs.\nSize: 6-inch diameter bowl\nMaterials: Solid granite",
+          "price": 34.99,
+          "category": 6,
+          "rating": 4.8,
+          "image_url": "pestle_and_mortar.jpg"
+        }
+      },
+      {
+        "pk": 44,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5044",
+          "name": "Classic Margherita Pizza",
+          "description": "Traditional Margherita pizza with fresh mozzarella and basil.\nSize: 12-inch pizza",
+          "price": 9.99,
+          "category": 11,
+          "rating": 4.7,
+          "image_url": "pizza.jpg"
+        }
+      },
+      {
+        "pk": 45,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5045",
+          "name": "Savory Pizza Roll",
+          "description": "Delicious pizza roll filled with cheese and pepperoni.\nSize: Pack of 4",
+          "price": 3.99,
+          "category": 4,
+          "rating": 4.5,
+          "image_url": "pizzaroll.jpg"
+        }
+      },
+      {
+        "pk": 46,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5046",
+          "name": "Fresh Ripe Plum",
+          "description": "Sweet and juicy plums, perfect for snacking or baking.\nSize: Pack of 6",
+          "price": 2.99,
+          "category": 2,
+          "rating": 4.3,
+          "image_url": "plum.jpg"
+        }
+      },
+      {
+        "pk": 47,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5047",
+          "name": "Gourmet Popcorn",
+          "description": "Premium popcorn for a delicious movie night snack.\nSize: 100g bag",
+          "price": 1.99,
+          "category": 4,
+          "rating": 4.6,
+          "image_url": "popcorn.jpg"
+        }
+      },
+      {
+        "pk": 48,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5048",
+          "name": "Homemade Quiche Lorraine",
+          "description": "Classic quiche with a flaky crust, filled with cheese and bacon.\nSize: 9-inch quiche",
+          "price": 12.99,
+          "category": 4,
+          "rating": 4.8,
+          "image_url": "quiche.jpg"
+        }
+      },
+      {
+        "pk": 49,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5049",
+          "name": "Fresh Raspberries",
+          "description": "Sweet and tangy raspberries, perfect for snacking or desserts.\nSize: 250g punnet",
+          "price": 3.99,
+          "category": 8,
+          "rating": 4.7,
+          "image_url": "raspberry.jpg"
+        }
+      },
+      {
+        "pk": 50,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5050",
+          "name": "Juicy Red Grapes",
+          "description": "Plump and sweet red grapes for a healthy snack.\nSize: 500g bunch",
+          "price": 3.49,
+          "category": 11,
+          "rating": 4.5,
+          "image_url": "red_grapes.jpg"
+        }
+      },
+      {
+        "pk": 51,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5051",
+          "name": "Refreshing Red Smoothie",
+          "description": "Delicious berry-based smoothie packed with antioxidants.\nSize: 16oz bottle",
+          "price": 4.99,
+          "category": 9,
+          "rating": 4.6,
+          "image_url": "red_smoothie.jpg"
+        }
+      },
+      {
+        "pk": 52,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5052",
+          "name": "Chocolate Swiss Roll",
+          "description": "Decadent chocolate swiss roll with creamy filling.\nSize: 8-inch roll",
+          "price": 7.99,
+          "category": 4,
+          "rating": 4.7,
+          "image_url": "roulade.jpg"
+        }
+      },
+      {
+        "pk": 53,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5053",
+          "name": "Premium Pork Sausages",
+          "description": "High-quality pork sausages for grilling or frying.\nSize: Pack of 6",
+          "price": 4.99,
+          "category": 1,
+          "rating": 4.6,
+          "image_url": "sausage.jpg"
+        }
+      },
+      {
+        "pk": 54,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5054",
+          "name": "Assorted Fruit Smoothies",
+          "description": "Variety pack of delicious fruit smoothies for a healthy boost.\nSize: 4 x 8oz bottles",
+          "price": 9.99,
+          "category": 9,
+          "rating": 4.8,
+          "image_url": "smoothies.jpg"
+        }
+      },
+      {
+        "pk": 55,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5055",
+          "name": "Artisan Sourdough Bread",
+          "description": "Rustic sourdough bread with a crispy crust and chewy interior.\nSize: 1lb loaf",
+          "price": 4.99,
+          "category": 4,
+          "rating": 4.9,
+          "image_url": "sourdough.jpg"
+        }
+      },
+      {
+        "pk": 56,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5056",
+          "name": "Dried Spaghetti Pasta",
+          "description": "High-quality dried spaghetti for your favorite pasta dishes.\nSize: 500g pack",
+          "price": 2.49,
+          "category": 4,
+          "rating": 4.5,
+          "image_url": "spaghetti.jpg"
+        }
+      },
+      {
+        "pk": 57,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5057",
+          "name": "Fresh Butternut Squash",
+          "description": "Nutrient-rich butternut squash for soups and roasting.\nSize: One medium squash",
+          "price": 2.99,
+          "category": 2,
+          "rating": 4.4,
+          "image_url": "squash.jpg"
+        }
+      },
+      {
+        "pk": 58,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5058",
+          "name": "Fresh Strawberries",
+          "description": "Sweet and juicy strawberries, perfect for snacking or desserts.\nSize: 400g punnet",
+          "price": 3.99,
+          "category": 2,
+          "rating": 4.8,
+          "image_url": "strawberry.jpg"
+        }
+      },
+      {
+        "pk": 59,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5059",
+          "name": "Ripe Tangerine",
+          "description": "Sweet and easy-to-peel tangerines for a refreshing snack.\nSize: Pack of 6",
+          "price": 2.99,
+          "category": 8,
+          "rating": 4.5,
+          "image_url": "tangerine.jpg"
+        }
+      },
+      {
+        "pk": 60,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5060",
+          "name": "Classic Tiramisu",
+          "description": "Traditional Italian tiramisu dessert with coffee-soaked ladyfingers.\nSize: 6-inch square, serves 6",
+          "price": 12.99,
+          "category": 4,
+          "rating": 4.9,
+          "image_url": "tiramisu.jpg"
+        }
+      },
+      {
+        "pk": 61,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5061",
+          "name": "Vine-Ripened Tomato",
+          "description": "Juicy, flavorful tomatoes perfect for salads or cooking.\nSize: Pack of 4",
+          "price": 2.99,
+          "category": 2,
+          "rating": 4.6,
+          "image_url": "tomato.jpg"
+        }
+      },
+      {
+        "pk": 62,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5062",
+          "name": "Refreshing Tomato Smoothie",
+          "description": "Unique and healthy tomato-based smoothie packed with vitamins.\nSize: 16oz bottle",
+          "price": 4.49,
+          "category": 9,
+          "rating": 4.2,
+          "image_url": "tomato_smoothie.jpg"
+        }
+      },
+      {
+        "pk": 63,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5063",
+          "name": "Precision Utility Knife",
+          "description": "Versatile utility knife for various kitchen tasks.\nSize: 6-inch blade\nMaterials: High-carbon stainless steel",
+          "price": 19.99,
+          "category": 6,
+          "rating": 4.7,
+          "image_url": "utility_knife.jpg"
+        }
+      },
+      {
+        "pk": 64,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5064",
+          "name": "Fresh Walnut Halves",
+          "description": "Crunchy and nutritious walnut halves for snacking or baking.\nSize: 250g pack",
+          "price": 5.99,
+          "category": 2,
+          "rating": 4.5,
+          "image_url": "walnut.jpg"
+        }
+      },
+      {
+        "pk": 65,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5065",
+          "name": "Stainless Steel Whisk",
+          "description": "Durable and efficient whisk for mixing and blending.\nSize: 12-inch length\nMaterials: Stainless steel",
+          "price": 8.99,
+          "category": 8,
+          "rating": 4.6,
+          "image_url": "whisk.jpg"
+        }
+      },
+      {
+        "pk": 66,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5066",
+          "name": "Classic White Dinner Plates Set",
+          "description": "Elegant white dinner plates for everyday use or special occasions.\nSize: Set of 6, 10-inch diameter\nMaterials: Porcelain",
+          "price": 29.99,
+          "category": 7,
+          "rating": 4.8,
+          "image_url": "white_plates.jpg"
+        }
+      },
+      {
+        "pk": 67,
+        "model": "products.product",
+        "fields": {
+          "sku": "fs5067",
+          "name": "Handcrafted Wooden Spoon",
+          "description": "Traditional wooden spoon for gentle stirring and serving.\nSize: 12-inch length\nMaterials: Natural hardwood",
+          "price": 6.99,
+          "category": 6,
+          "rating": 4.7,
+          "image_url": "wooden_spoon.jpg"
+        }
+      }
+    ]
