@@ -168,7 +168,7 @@ header.fixed-top {
 .product-image-wrapper {
     position: relative;
     width: 100%;
-    padding-top: 100%; /* This creates a 1:1 aspect ratio */
+    padding-top: 100%;
     overflow: hidden;
 }
 
@@ -178,7 +178,7 @@ header.fixed-top {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* This will crop the image if necessary */
+    object-fit: cover;
 }
 
 /* Media Queries */
@@ -204,7 +204,7 @@ header.fixed-top {
 
 @media (max-width: 991px) {
     .navbar-toggler {
-        margin-right: 15px;
+        margin-left: 15px;
     }
 
     .mobile-top-header-container .list-inline-item {
@@ -213,11 +213,56 @@ header.fixed-top {
     }
 
     .mobile-top-header-container .list-inline-item:last-child {
-        margin-right: 0;
+        margin-right: 15px;
     }
     
     .product-container {
         padding-top: 20px;
+    }
+
+    /* Mobile Navbar Styles */
+    .navbar-collapse {
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 20px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .navbar-nav {
+        padding-left: 15px; /* Add some left padding */
+    }
+
+    .nav-item {
+        padding: 5px 0;
+    }
+
+    .nav-link {
+        padding: 10px 15px !important;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .nav-link:hover, .nav-link:focus {
+        background-color: rgba(0,0,0,0.05);
+    }
+
+    .dropdown-menu {
+        background-color: transparent;
+        border: none;
+        padding-left: 15px;
+    }
+
+    .dropdown-item {
+        padding: 8px 15px;
+        color: #333;
+    }
+
+    .dropdown-item:hover, .dropdown-item:focus {
+        background-color: rgba(0,0,0,0.05);
     }
 }
 
