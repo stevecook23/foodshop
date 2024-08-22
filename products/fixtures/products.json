@@ -9,7 +9,8 @@
         "price": 4.99,
         "category": 2,
         "rating": 4.7,
-        "image": "/product_images/almond.jpg"
+        "image": "/product_images/almond.jpg",
+        "tags": "nuts, snacks, baking, organic"
       }
     },
     {
@@ -22,7 +23,8 @@
         "price": 3.99,
         "category": 1,
         "rating": 4.9,
-        "image": "product_images/bacon.jpg"
+        "image": "product_images/bacon.jpg",
+        "tags": "meat, breakfast, pork, protein"
       }
     },
     {
@@ -35,7 +37,8 @@
         "price": 1.99,
         "category": 2,
         "rating": 4.5,
-        "image": "product_images/banana.jpg"
+        "image": "product_images/banana.jpg",
+        "tags": "fruit, snacks, smoothies, potassium"
       }
     },
     {
@@ -48,7 +51,8 @@
         "price": 29.99,
         "category": 7,
         "rating": 4.8,
-        "image": "product_images/blue_edge_plates.jpg"
+        "image": "product_images/blue_edge_plates.jpg",
+        "tags": "tableware, dinnerware, plates, kitchenware"
       }
     },
     {
@@ -61,7 +65,8 @@
         "price": 2.99,
         "category": 4,
         "rating": 4.6,
-        "image": "product_images/breadroll.jpg"
+        "image": "product_images/breadroll.jpg",
+        "tags": "bakery, bread, rolls, sandwiches"
       }
     },
     {
@@ -74,7 +79,8 @@
         "price": 4.49,
         "category": 4,
         "rating": 4.8,
-        "image": "product_images/brioche.jpg"
+        "image": "product_images/brioche.jpg",
+        "tags": "bakery, bread, brioche, french"
       }
     },
     {
@@ -87,7 +93,8 @@
         "price": 2.49,
         "category": 2,
         "rating": 4.3,
-        "image": "product_images/broccoli.jpg"
+        "image": "product_images/broccoli.jpg",
+        "tags": "vegetables, greens, healthy, side dish"
       }
     },
     {
@@ -100,7 +107,8 @@
         "price": 39.99,
         "category": 6,
         "rating": 4.9,
-        "image": "product_images/carving_knife.jpg"
+        "image": "product_images/carving_knife.jpg",
+        "tags": "kitchenware, knives, utensils, carving"
       }
     },
     {
@@ -113,7 +121,8 @@
         "price": 7.99,
         "category": 1,
         "rating": 4.7,
-        "image": "product_images/chicken.jpg"
+        "image": "product_images/chicken.jpg",
+        "tags": "poultry, meat, protein, roasting"
       }
     },
     {
@@ -126,7 +135,8 @@
         "price": 3.49,
         "category": 2,
         "rating": 4.2,
-        "image": "product_images/coconut.jpg"
+        "image": "product_images/coconut.jpg",
+        "tags": "fruit, tropical, coconut water, exotic"
       }
     },
     {
@@ -139,7 +149,8 @@
         "price": 8.99,
         "category": 9,
         "rating": 4.8,
-        "image": "product_images/coffee.jpg"
+        "image": "product_images/coffee.jpg",
+        "tags": "coffee, beverages, caffeine, brewing"
       }
     },
     {
@@ -152,7 +163,8 @@
         "price": 24.99,
         "category": 7,
         "rating": 4.6,
-        "image": "product_images/coffee_cups.jpg"
+        "image": "product_images/coffee_cups.jpg",
+        "tags": "tableware, cups, coffee, tea"
       }
     },
     {
@@ -165,7 +177,8 @@
         "price": 3.99,
         "category": 4,
         "rating": 4.7,
-        "image": "product_images/cookie.jpg"
+        "image": "product_images/cookie.jpg",
+        "tags": "bakery, cookies, dessert, snacks"
       }
     },
     {
@@ -178,7 +191,8 @@
         "price": 199.99,
         "category": 5,
         "rating": 4.9,
-        "image": "product_images/copper_pan_set.jpg"
+        "image": "product_images/copper_pan_set.jpg",
+        "tags": "kitchenware, cookware, pans, copper"
       }
     },
     {
@@ -191,7 +205,8 @@
         "price": 3.49,
         "category": 4,
         "rating": 4.8,
-        "image": "product_images/croissant.jpg"
+        "image": "product_images/croissant.jpg",
+        "tags": "bakery, pastry, breakfast, french"
       }
     },
     {
@@ -204,7 +219,8 @@
         "price": 9.99,
         "category": 4,
         "rating": 4.7,
-        "image": "product_images/cupcake.jpg"
+        "image": "product_images/cupcake.jpg",
+        "tags": "bakery, cupcakes, dessert, sweets"
       }
     },
     {
@@ -217,7 +233,8 @@
         "price": 14.99,
         "category": 7,
         "rating": 4.5,
-        "image": "product_images/cutlery_dessert_spoons.jpg"
+        "image": "product_images/cutlery_dessert_spoons.jpg",
+        "tags": "cutlery, tableware, spoons, dessert"
       }
     },
     {
@@ -230,7 +247,8 @@
         "price": 16.99,
         "category": 7,
         "rating": 4.6,
-        "image": "product_images/cutlery_forks.jpg"
+        "image": "product_images/cutlery_forks.jpg",
+        "tags": "cutlery, tableware, forks, dining"
       }
     },
     {
@@ -243,7 +261,8 @@
         "price": 17.99,
         "category": 7,
         "rating": 4.7,
-        "image": "product_images/cutlery_knives.jpg"
+        "image": "product_images/cutlery_knives.jpg",
+        "tags": "cutlery, tableware, knives, dining"
       }
     },
     {
@@ -256,7 +275,8 @@
         "price": 59.99,
         "category": 7,
         "rating": 4.8,
-        "image": "product_images/cutlery_set.jpg"
+        "image": "product_images/cutlery_set.jpg",
+        "tags": "cutlery, tableware, dining, kitchenware"
       }
     },
     {
@@ -269,7 +289,8 @@
         "price": 2.99,
         "category": 4,
         "rating": 4.5,
-        "image": "product_images/doughnut.jpg"
+        "image": "product_images/doughnut.jpg",
+        "tags": "bakery, doughnuts, dessert, snacks"
       }
     },
     {
@@ -282,7 +303,8 @@
         "price": 3.49,
         "category": 3,
         "rating": 4.8,
-        "image": "product_images/egg.jpg"
+        "image": "product_images/egg.jpg",
+        "tags": "eggs, breakfast, protein, baking"
       }
     },
     {
@@ -295,7 +317,8 @@
         "price": 4.99,
         "category": 2,
         "rating": 4.3,
-        "image": "product_images/fig.jpg"
+        "image": "product_images/fig.jpg",
+        "tags": "fruit, fresh, snacks, exotic"
       }
     },
     {
@@ -308,7 +331,8 @@
         "price": 2.49,
         "category": 2,
         "rating": 4.4,
-        "image": "product_images/grapefruit.jpg"
+        "image": "product_images/grapefruit.jpg",
+        "tags": "fruit, citrus, breakfast, healthy"
       }
     },
     {
@@ -321,7 +345,8 @@
         "price": 12.99,
         "category": 6,
         "rating": 4.6,
-        "image": "product_images/grater.jpg"
+        "image": "product_images/grater.jpg",
+        "tags": "kitchenware, utensils, grater, cheese"
       }
     },
     {
@@ -334,7 +359,8 @@
         "price": 3.99,
         "category": 2,
         "rating": 4.7,
-        "image": "product_images/green_grape.jpg"
+        "image": "product_images/green_grape.jpg",
+        "tags": "fruit, grapes, snacks, fresh"
       }
     },
     {
@@ -347,7 +373,8 @@
         "price": 4.99,
         "category": 9,
         "rating": 4.5,
-        "image": "product_images/green_smoothie.jpg"
+        "image": "product_images/green_smoothie.jpg",
+        "tags": "beverages, smoothies, healthy, green"
       }
     },
     {
@@ -360,7 +387,8 @@
         "price": 4.49,
         "category": 3,
         "rating": 4.8,
-        "image": "product_images/icecream.jpg"
+        "image": "product_images/icecream.jpg",
+        "tags": "dessert, ice cream, frozen, vanilla"
       }
     },
     {
@@ -373,7 +401,8 @@
         "price": 2.99,
         "category": 2,
         "rating": 4.4,
-        "image": "product_images/kiwi.jpg"
+        "image": "product_images/kiwi.jpg",
+        "tags": "fruit, kiwi, exotic, vitamin C"
       }
     },
     {
@@ -386,7 +415,8 @@
           "price": 89.99,
           "category": 6,
           "rating": 4.9,
-          "image": "product_images/knife_set.jpg"
+          "image": "product_images/knife_set.jpg",
+          "tags": "kitchenware, knives, utensils, cooking"
         }
       },
       {
@@ -399,7 +429,8 @@
           "price": 1.99,
           "category": 2,
           "rating": 4.6,
-          "image": "product_images/lemon.jpg"
+          "image": "product_images/lemon.jpg",
+          "tags": "fruit, citrus, cooking, garnish"
         }
       },
       {
@@ -412,7 +443,8 @@
           "price": 4.99,
           "category": 2,
           "rating": 4.3,
-          "image": "product_images/lychee.jpg"
+          "image": "product_images/lychee.jpg",
+          "tags": "fruit, exotic, tropical, sweet"
         }
       },
       {
@@ -425,7 +457,8 @@
           "price": 14.99,
           "category": 4,
           "rating": 4.8,
-          "image": "product_images/macaron.jpg"
+          "image": "product_images/macaron.jpg",
+          "tags": "dessert, french, pastry, sweets"
         }
       },
       {
@@ -438,7 +471,8 @@
           "price": 24.99,
           "category": 5,
           "rating": 4.7,
-          "image": "product_images/milk_saucepan.jpg"
+          "image": "product_images/milk_saucepan.jpg",
+          "tags": "kitchenware, cookware, saucepan, milk"
         }
       },
       {
@@ -451,7 +485,8 @@
           "price": 5.99,
           "category": 2,
           "rating": 4.6,
-          "image": "product_images/mixed_berries.jpg"
+          "image": "product_images/mixed_berries.jpg",
+          "tags": "fruit, berries, antioxidants, healthy"
         }
       },
       {
@@ -464,7 +499,8 @@
           "price": 29.99,
           "category": 5,
           "rating": 4.8,
-          "image": "product_images/nonstick_pan.jpg"
+          "image": "product_images/nonstick_pan.jpg",
+          "tags": "kitchenware, cookware, frying pan, non-stick"
         }
       },
       {
@@ -477,7 +513,8 @@
           "price": 1.49,
           "category": 2,
           "rating": 4.5,
-          "image": "product_images/onion.jpg"
+          "image": "product_images/onion.jpg",
+          "tags": "vegetables, onions, cooking, salad"
         }
       },
       {
@@ -490,7 +527,8 @@
           "price": 159.99,
           "category": 5,
           "rating": 4.9,
-          "image": "product_images/pan_set.jpg"
+          "image": "product_images/pan_set.jpg",
+          "tags": "kitchenware, cookware, pots, pans"
         }
       },
       {
@@ -503,7 +541,8 @@
           "price": 3.99,
           "category": 4,
           "rating": 4.7,
-          "image": "product_images/pancakes.jpg"
+          "image": "product_images/pancakes.jpg",
+          "tags": "breakfast, pancakes, sweet, brunch"
         }
       },
       {
@@ -516,7 +555,8 @@
           "price": 4.99,
           "category": 4,
           "rating": 4.6,
-          "image": "product_images/pasta.jpg"
+          "image": "product_images/pasta.jpg",
+          "tags": "pasta, Italian, cooking, carbs"
         }
       },
       {
@@ -529,7 +569,8 @@
           "price": 3.49,
           "category": 2,
           "rating": 4.5,
-          "image": "product_images/peanut.jpg"
+          "image": "product_images/peanut.jpg",
+          "tags": "nuts, snacks, protein, roasted"
         }
       },
       {
@@ -542,7 +583,8 @@
           "price": 2.99,
           "category": 2,
           "rating": 4.4,
-          "image": "product_images/pepper.jpg"
+          "image": "product_images/pepper.jpg",
+          "tags": "vegetables, peppers, cooking, salad"
         }
       },
       {
@@ -555,7 +597,8 @@
           "price": 34.99,
           "category": 6,
           "rating": 4.8,
-          "image": "product_images/pestle_and_mortar.jpg"
+          "image": "product_images/pestle_and_mortar.jpg",
+          "tags": "kitchenware, utensils, grinding, spices"
         }
       },
       {
@@ -568,7 +611,9 @@
           "price": 9.99,
           "category": 11,
           "rating": 4.7,
-          "image": "product_images/pizza.jpg"
+          "image": "product_images/pizza.jpg",
+          "tags": "pizza, Italian, dinner, fast food"
+          
         }
       },
       {
@@ -581,7 +626,8 @@
           "price": 3.99,
           "category": 4,
           "rating": 4.5,
-          "image": "product_images/pizzaroll.jpg"
+          "image": "product_images/pizzaroll.jpg",
+          "tags": "snacks, pizza, appetizers, party food"
         }
       },
       {
@@ -594,7 +640,8 @@
           "price": 2.99,
           "category": 2,
           "rating": 4.3,
-          "image": "product_images/plum.jpg"
+          "image": "product_images/plum.jpg",
+          "tags": "fruit, plums, stone fruit, snacks"
         }
       },
       {
@@ -607,7 +654,8 @@
           "price": 1.99,
           "category": 4,
           "rating": 4.6,
-          "image": "product_images/popcorn.jpg"
+          "image": "product_images/popcorn.jpg",
+          "tags": "snacks, popcorn, movie night, party food"
         }
       },
       {
@@ -620,7 +668,8 @@
           "price": 12.99,
           "category": 4,
           "rating": 4.8,
-          "image": "product_images/quiche.jpg"
+          "image": "product_images/quiche.jpg",
+          "tags": "quiche, French, breakfast, brunch"
         }
       },
       {
@@ -633,7 +682,8 @@
           "price": 3.99,
           "category": 8,
           "rating": 4.7,
-          "image": "product_images/raspberry.jpg"
+          "image": "product_images/raspberry.jpg",
+          "tags": "fruit, berries, snacks, dessert"
         }
       },
       {
@@ -646,7 +696,8 @@
           "price": 3.49,
           "category": 11,
           "rating": 4.5,
-          "image": "product_images/red_grapes.jpg"
+          "image": "product_images/red_grapes.jpg",
+          "tags": "fruit, grapes, snacks, fresh"
         }
       },
       {
@@ -659,7 +710,8 @@
           "price": 4.99,
           "category": 9,
           "rating": 4.6,
-          "image": "product_images/red_smoothie.jpg"
+          "image": "product_images/red_smoothie.jpg",
+          "tags": "beverages, smoothies, healthy, fruit"
         }
       },
       {
@@ -672,7 +724,8 @@
           "price": 7.99,
           "category": 4,
           "rating": 4.7,
-          "image": "product_images/roulade.jpg"
+          "image": "product_images/roulade.jpg",
+          "tags": "dessert, cake, chocolate, sweets"
         }
       },
       {
@@ -685,7 +738,8 @@
           "price": 4.99,
           "category": 1,
           "rating": 4.6,
-          "image": "product_images/sausage.jpg"
+          "image": "product_images/sausage.jpg",
+          "tags": "meat, sausages, pork, protein"
         }
       },
       {
@@ -698,7 +752,8 @@
           "price": 9.99,
           "category": 9,
           "rating": 4.8,
-          "image": "product_images/smoothies.jpg"
+          "image": "product_images/smoothies.jpg",
+          "tags": "beverages, smoothies, fruit, healthy"
         }
       },
       {
@@ -711,7 +766,8 @@
           "price": 4.99,
           "category": 4,
           "rating": 4.9,
-          "image": "product_images/sourdough.jpg"
+          "image": "product_images/sourdough.jpg",
+          "tags": "bakery, bread, sourdough, artisan"
         }
       },
       {
@@ -724,7 +780,8 @@
           "price": 2.49,
           "category": 4,
           "rating": 4.5,
-          "image": "product_images/spaghetti.jpg"
+          "image": "product_images/spaghetti.jpg",
+          "tags": "pasta, Italian, cooking, spaghetti"
         }
       },
       {
@@ -737,7 +794,8 @@
           "price": 2.99,
           "category": 2,
           "rating": 4.4,
-          "image": "product_images/squash.jpg"
+          "image": "product_images/squash.jpg",
+          "tags": "vegetables, squash, autumn, cooking"
         }
       },
       {
@@ -750,7 +808,8 @@
           "price": 3.99,
           "category": 2,
           "rating": 4.8,
-          "image": "product_images/strawberry.jpg"
+          "image": "product_images/strawberry.jpg",
+          "tags": "fruit, berries, snacks, dessert"
         }
       },
       {
@@ -763,7 +822,8 @@
           "price": 2.99,
           "category": 8,
           "rating": 4.5,
-          "image": "product_images/tangerine.jpg"
+          "image": "product_images/tangerine.jpg",
+          "tags": "fruit, citrus, snacks, vitamin C"
         }
       },
       {
@@ -776,7 +836,8 @@
           "price": 12.99,
           "category": 4,
           "rating": 4.9,
-          "image": "product_images/tiramisu.jpg"
+          "image": "product_images/tiramisu.jpg",
+          "tags": "dessert, Italian, coffee, cake"
         }
       },
       {
@@ -789,7 +850,8 @@
           "price": 2.99,
           "category": 2,
           "rating": 4.6,
-          "image": "product_images/tomato.jpg"
+          "image": "product_images/tomato.jpg",
+          "tags": "vegetables, tomatoes, salad, cooking"
         }
       },
       {
@@ -802,7 +864,8 @@
           "price": 4.49,
           "category": 9,
           "rating": 4.2,
-          "image": "product_images/tomato_smoothie.jpg"
+          "image": "product_images/tomato_smoothie.jpg",
+          "tags": "beverages, smoothies, tomato, healthy"
         }
       },
       {
@@ -815,7 +878,9 @@
           "price": 19.99,
           "category": 6,
           "rating": 4.7,
-          "image": "product_images/utility_knife.jpg"
+          "image": "product_images/utility_knife.jpg",
+          "tags": "kitchenware, knives, utensils, cutting"
+          
         }
       },
       {
@@ -828,7 +893,9 @@
           "price": 5.99,
           "category": 2,
           "rating": 4.5,
-          "image": "product_images/walnut.jpg"
+          "image": "product_images/walnut.jpg",
+          "tags": "nuts, snacks, baking, protein"
+          
         }
       },
       {
@@ -841,7 +908,9 @@
           "price": 8.99,
           "category": 8,
           "rating": 4.6,
-          "image": "product_images/whisk.jpg"
+          "image": "product_images/whisk.jpg",
+          "tags": "kitchenware, utensils, baking, mixing"
+          
         }
       },
       {
@@ -854,7 +923,9 @@
           "price": 29.99,
           "category": 7,
           "rating": 4.8,
-          "image": "product_images/white_plates.jpg"
+          "image": "product_images/white_plates.jpg",
+          "tags": "tableware, dinnerware, plates, kitchenware"
+          
         }
       },
       {
@@ -867,7 +938,8 @@
           "price": 6.99,
           "category": 6,
           "rating": 4.7,
-          "image": "product_images/wooden_spoon.jpg"
+          "image": "product_images/wooden_spoon.jpg",
+          "tags": "kitchenware, utensils, wooden, cooking"
         }
       }
     ]

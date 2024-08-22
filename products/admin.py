@@ -6,9 +6,9 @@ class CategoryAdmin(admin.ModelAdmin):
     search_fields = ['name', 'friendly_name']
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'category', 'price', 'rating', 'sku')
+    list_display = ('name', 'category', 'price', 'rating', 'sku', 'tags')
     list_filter = ('category', 'rating')
-    search_fields = ['name', 'description', 'sku']
+    search_fields = ['name', 'description', 'sku', 'tags']
     ordering = ('sku',)
 
 admin.site.register(Category, CategoryAdmin)
