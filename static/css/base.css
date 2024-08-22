@@ -151,7 +151,22 @@ header.fixed-top {
     width: auto;
 }
 
+/* These next two classes are used to create a 1:1 aspect ratio for the product images */
+.product-image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; /* This creates a 1:1 aspect ratio */
+    overflow: hidden;
+}
 
+.product-image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This will crop the image if necessary */
+}
 
 /* Media Queries */
 @media (min-width: 1200px) {
