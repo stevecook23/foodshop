@@ -17,12 +17,12 @@
                 Ingredients
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="ingredients-link">
-                <a href="" class="dropdown-item">Meat</a>
-                <a href="" class="dropdown-item">Vegetables &amp; Fruit</a>
-                <a href="" class="dropdown-item">Dairy</a>
-                <a href="" class="dropdown-item">Carbohydrates</a>
-                <a href="" class="dropdown-item">Beverages</a>
-                <a href="" class="dropdown-item">All Ingredients</a>
+                <a href="{% url 'products' %}?category=meat" class="dropdown-item">Meat</a>
+                <a href="{% url 'products' %}?category=vegetables_fruit" class="dropdown-item">Vegetables &amp; Fruit</a>
+                <a href="{% url 'products' %}?category=dairy" class="dropdown-item">Dairy</a>
+                <a href="{% url 'products' %}?category=carbohydrates" class="dropdown-item">Carbohydrates</a>
+                <a href="{% url 'products' %}?category=beverages" class="dropdown-item">Beverages</a>
+                <a href="{% url 'products' %}?category=meat,vegetables_fruit,dairy,carbohydrates,beverages" class="dropdown-item">All Ingredients</a>
             </div>
         </li>
 
@@ -31,10 +31,10 @@
                 Cookware
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="cookware-link">
-                <a href="" class="dropdown-item">Pots &amp; Pans</a>
-                <a href="" class="dropdown-item">Utensils</a>
-                <a href="" class="dropdown-item">Flatware</a>
-                <a href="" class="dropdown-item">All Homeware</a>
+                <a href="{% url 'products' %}?category=pots_pans" class="dropdown-item">Pots &amp; Pans</a>
+                <a href="{% url 'products' %}?category=utensils" class="dropdown-item">Utensils</a>
+                <a href="{% url 'products' %}?category=flatware" class="dropdown-item">Flatware</a>
+                <a href="{% url 'products' %}?category=pots_pans,utensils,flatware" class="dropdown-item">All Homeware</a>
             </div>
         </li>
 
@@ -43,10 +43,10 @@
                 Special Offers
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="specials-link">
-                <a href="" class="dropdown-item">New Arrivals</a>
-                <a href="" class="dropdown-item">Deals</a>
-                <a href="" class="dropdown-item">Clearance</a>
-                <a href="" class="dropdown-item">All Specials</a>
+                <a href="{% url 'products' %}?category=new_arrivals" class="dropdown-item">New Arrivals</a>
+                <a href="{% url 'products' %}?category=deals" class="dropdown-item">Deals</a>
+                <a href="{% url 'products' %}?category=clearance" class="dropdown-item">Clearance</a>
+                <a href="{% url 'products' %}?category=new_arrivals,deals,clearance" class="dropdown-item">All Specials</a>
             </div>
         </li>
     </ul>

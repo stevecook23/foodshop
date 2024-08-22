@@ -60,6 +60,7 @@ footer {
     border-radius: 10px;
 }
 
+/* Buttons */
 .shop-now-button {
     background-color: #c7c7c7;
     color: #000;
@@ -86,6 +87,18 @@ footer {
     background-color: var(--secondary-bg-color);
     color: var(--primary-text-color);
 }
+
+.category-badge-hover {
+    transition: all 0.3s ease;
+}
+
+.category-badge-hover:hover {
+    background-color: #343a40;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+/* End Buttons */
 
 .text-black {
     color: var(--primary-bg-color) !important;
