@@ -9,7 +9,7 @@
         "price": 4.99,
         "category": 2,
         "rating": 4.7,
-        "image_url": "product_images/almond.jpg"
+        "image": "/product_images/almond.jpg"
       }
     },
     {
@@ -22,7 +22,7 @@
         "price": 3.99,
         "category": 1,
         "rating": 4.9,
-        "image_url": "product_images/bacon.jpg"
+        "image": "product_images/bacon.jpg"
       }
     },
     {
@@ -35,7 +35,7 @@
         "price": 1.99,
         "category": 2,
         "rating": 4.5,
-        "image_url": "product_images/banana.jpg"
+        "image": "product_images/banana.jpg"
       }
     },
     {
@@ -48,7 +48,7 @@
         "price": 29.99,
         "category": 7,
         "rating": 4.8,
-        "image_url": "product_images/blue_edge_plates.jpg"
+        "image": "product_images/blue_edge_plates.jpg"
       }
     },
     {
@@ -61,7 +61,7 @@
         "price": 2.99,
         "category": 4,
         "rating": 4.6,
-        "image_url": "product_images/breadroll.jpg"
+        "image": "product_images/breadroll.jpg"
       }
     },
     {
@@ -74,7 +74,7 @@
         "price": 4.49,
         "category": 4,
         "rating": 4.8,
-        "image_url": "product_images/brioche.jpg"
+        "image": "product_images/brioche.jpg"
       }
     },
     {
@@ -87,7 +87,7 @@
         "price": 2.49,
         "category": 2,
         "rating": 4.3,
-        "image_url": "product_images/broccoli.jpg"
+        "image": "product_images/broccoli.jpg"
       }
     },
     {
@@ -100,7 +100,7 @@
         "price": 39.99,
         "category": 6,
         "rating": 4.9,
-        "image_url": "product_images/carving_knife.jpg"
+        "image": "product_images/carving_knife.jpg"
       }
     },
     {
@@ -113,7 +113,7 @@
         "price": 7.99,
         "category": 1,
         "rating": 4.7,
-        "image_url": "product_images/chicken.jpg"
+        "image": "product_images/chicken.jpg"
       }
     },
     {
@@ -126,7 +126,7 @@
         "price": 3.49,
         "category": 2,
         "rating": 4.2,
-        "image_url": "product_images/coconut.jpg"
+        "image": "product_images/coconut.jpg"
       }
     },
     {
@@ -139,7 +139,7 @@
         "price": 8.99,
         "category": 9,
         "rating": 4.8,
-        "image_url": "product_images/coffee.jpg"
+        "image": "product_images/coffee.jpg"
       }
     },
     {
@@ -152,7 +152,7 @@
         "price": 24.99,
         "category": 7,
         "rating": 4.6,
-        "image_url": "product_images/coffee_cups.jpg"
+        "image": "product_images/coffee_cups.jpg"
       }
     },
     {
@@ -165,7 +165,7 @@
         "price": 3.99,
         "category": 4,
         "rating": 4.7,
-        "image_url": "product_images/cookie.jpg"
+        "image": "product_images/cookie.jpg"
       }
     },
     {
@@ -178,7 +178,7 @@
         "price": 199.99,
         "category": 5,
         "rating": 4.9,
-        "image_url": "product_images/copper_pan_set.jpg"
+        "image": "product_images/copper_pan_set.jpg"
       }
     },
     {
@@ -191,7 +191,7 @@
         "price": 3.49,
         "category": 4,
         "rating": 4.8,
-        "image_url": "product_images/croissant.jpg"
+        "image": "product_images/croissant.jpg"
       }
     },
     {
@@ -204,7 +204,7 @@
         "price": 9.99,
         "category": 4,
         "rating": 4.7,
-        "image_url": "product_images/cupcake.jpg"
+        "image": "product_images/cupcake.jpg"
       }
     },
     {
@@ -217,7 +217,7 @@
         "price": 14.99,
         "category": 7,
         "rating": 4.5,
-        "image_url": "product_images/cutlery_dessert_spoons.jpg"
+        "image": "product_images/cutlery_dessert_spoons.jpg"
       }
     },
     {
@@ -230,7 +230,7 @@
         "price": 16.99,
         "category": 7,
         "rating": 4.6,
-        "image_url": "product_images/cutlery_forks.jpg"
+        "image": "product_images/cutlery_forks.jpg"
       }
     },
     {
@@ -243,7 +243,7 @@
         "price": 17.99,
         "category": 7,
         "rating": 4.7,
-        "image_url": "product_images/cutlery_knives.jpg"
+        "image": "product_images/cutlery_knives.jpg"
       }
     },
     {
@@ -256,7 +256,7 @@
         "price": 59.99,
         "category": 7,
         "rating": 4.8,
-        "image_url": "product_images/cutlery_set.jpg"
+        "image": "product_images/cutlery_set.jpg"
       }
     },
     {
@@ -269,7 +269,7 @@
         "price": 2.99,
         "category": 4,
         "rating": 4.5,
-        "image_url": "product_images/doughnut.jpg"
+        "image": "product_images/doughnut.jpg"
       }
     },
     {
@@ -282,7 +282,7 @@
         "price": 3.49,
         "category": 3,
         "rating": 4.8,
-        "image_url": "product_images/egg.jpg"
+        "image": "product_images/egg.jpg"
       }
     },
     {
@@ -295,7 +295,7 @@
         "price": 4.99,
         "category": 2,
         "rating": 4.3,
-        "image_url": "product_images/fig.jpg"
+        "image": "product_images/fig.jpg"
       }
     },
     {
@@ -308,7 +308,7 @@
         "price": 2.49,
         "category": 2,
         "rating": 4.4,
-        "image_url": "product_images/grapefruit.jpg"
+        "image": "product_images/grapefruit.jpg"
       }
     },
     {
@@ -321,7 +321,7 @@
         "price": 12.99,
         "category": 6,
         "rating": 4.6,
-        "image_url": "product_images/grater.jpg"
+        "image": "product_images/grater.jpg"
       }
     },
     {
@@ -334,7 +334,7 @@
         "price": 3.99,
         "category": 2,
         "rating": 4.7,
-        "image_url": "product_images/green_grape.jpg"
+        "image": "product_images/green_grape.jpg"
       }
     },
     {
@@ -347,7 +347,7 @@
         "price": 4.99,
         "category": 9,
         "rating": 4.5,
-        "image_url": "product_images/green_smoothie.jpg"
+        "image": "product_images/green_smoothie.jpg"
       }
     },
     {
@@ -360,7 +360,7 @@
         "price": 4.49,
         "category": 3,
         "rating": 4.8,
-        "image_url": "product_images/icecream.jpg"
+        "image": "product_images/icecream.jpg"
       }
     },
     {
@@ -373,7 +373,7 @@
         "price": 2.99,
         "category": 2,
         "rating": 4.4,
-        "image_url": "product_images/kiwi.jpg"
+        "image": "product_images/kiwi.jpg"
       }
     },
     {
@@ -386,7 +386,7 @@
           "price": 89.99,
           "category": 6,
           "rating": 4.9,
-          "image_url": "product_images/knife_set.jpg"
+          "image": "product_images/knife_set.jpg"
         }
       },
       {
@@ -399,7 +399,7 @@
           "price": 1.99,
           "category": 2,
           "rating": 4.6,
-          "image_url": "product_images/lemon.jpg"
+          "image": "product_images/lemon.jpg"
         }
       },
       {
@@ -412,7 +412,7 @@
           "price": 4.99,
           "category": 2,
           "rating": 4.3,
-          "image_url": "product_images/lychee.jpg"
+          "image": "product_images/lychee.jpg"
         }
       },
       {
@@ -425,7 +425,7 @@
           "price": 14.99,
           "category": 4,
           "rating": 4.8,
-          "image_url": "product_images/macaron.jpg"
+          "image": "product_images/macaron.jpg"
         }
       },
       {
@@ -438,7 +438,7 @@
           "price": 24.99,
           "category": 5,
           "rating": 4.7,
-          "image_url": "product_images/milk_saucepan.jpg"
+          "image": "product_images/milk_saucepan.jpg"
         }
       },
       {
@@ -451,7 +451,7 @@
           "price": 5.99,
           "category": 2,
           "rating": 4.6,
-          "image_url": "product_images/mixed_berries.jpg"
+          "image": "product_images/mixed_berries.jpg"
         }
       },
       {
@@ -464,7 +464,7 @@
           "price": 29.99,
           "category": 5,
           "rating": 4.8,
-          "image_url": "product_images/nonstick_pan.jpg"
+          "image": "product_images/nonstick_pan.jpg"
         }
       },
       {
@@ -477,7 +477,7 @@
           "price": 1.49,
           "category": 2,
           "rating": 4.5,
-          "image_url": "product_images/onion.jpg"
+          "image": "product_images/onion.jpg"
         }
       },
       {
@@ -490,7 +490,7 @@
           "price": 159.99,
           "category": 5,
           "rating": 4.9,
-          "image_url": "product_images/pan_set.jpg"
+          "image": "product_images/pan_set.jpg"
         }
       },
       {
@@ -503,7 +503,7 @@
           "price": 3.99,
           "category": 4,
           "rating": 4.7,
-          "image_url": "product_images/pancakes.jpg"
+          "image": "product_images/pancakes.jpg"
         }
       },
       {
@@ -516,7 +516,7 @@
           "price": 4.99,
           "category": 4,
           "rating": 4.6,
-          "image_url": "product_images/pasta.jpg"
+          "image": "product_images/pasta.jpg"
         }
       },
       {
@@ -529,7 +529,7 @@
           "price": 3.49,
           "category": 2,
           "rating": 4.5,
-          "image_url": "product_images/peanut.jpg"
+          "image": "product_images/peanut.jpg"
         }
       },
       {
@@ -542,7 +542,7 @@
           "price": 2.99,
           "category": 2,
           "rating": 4.4,
-          "image_url": "product_images/pepper.jpg"
+          "image": "product_images/pepper.jpg"
         }
       },
       {
@@ -555,7 +555,7 @@
           "price": 34.99,
           "category": 6,
           "rating": 4.8,
-          "image_url": "product_images/pestle_and_mortar.jpg"
+          "image": "product_images/pestle_and_mortar.jpg"
         }
       },
       {
@@ -568,7 +568,7 @@
           "price": 9.99,
           "category": 11,
           "rating": 4.7,
-          "image_url": "product_images/pizza.jpg"
+          "image": "product_images/pizza.jpg"
         }
       },
       {
@@ -581,7 +581,7 @@
           "price": 3.99,
           "category": 4,
           "rating": 4.5,
-          "image_url": "product_images/pizzaroll.jpg"
+          "image": "product_images/pizzaroll.jpg"
         }
       },
       {
@@ -594,7 +594,7 @@
           "price": 2.99,
           "category": 2,
           "rating": 4.3,
-          "image_url": "product_images/plum.jpg"
+          "image": "product_images/plum.jpg"
         }
       },
       {
@@ -607,7 +607,7 @@
           "price": 1.99,
           "category": 4,
           "rating": 4.6,
-          "image_url": "product_images/popcorn.jpg"
+          "image": "product_images/popcorn.jpg"
         }
       },
       {
@@ -620,7 +620,7 @@
           "price": 12.99,
           "category": 4,
           "rating": 4.8,
-          "image_url": "product_images/quiche.jpg"
+          "image": "product_images/quiche.jpg"
         }
       },
       {
@@ -633,7 +633,7 @@
           "price": 3.99,
           "category": 8,
           "rating": 4.7,
-          "image_url": "product_images/raspberry.jpg"
+          "image": "product_images/raspberry.jpg"
         }
       },
       {
@@ -646,7 +646,7 @@
           "price": 3.49,
           "category": 11,
           "rating": 4.5,
-          "image_url": "product_images/red_grapes.jpg"
+          "image": "product_images/red_grapes.jpg"
         }
       },
       {
@@ -659,7 +659,7 @@
           "price": 4.99,
           "category": 9,
           "rating": 4.6,
-          "image_url": "product_images/red_smoothie.jpg"
+          "image": "product_images/red_smoothie.jpg"
         }
       },
       {
@@ -672,7 +672,7 @@
           "price": 7.99,
           "category": 4,
           "rating": 4.7,
-          "image_url": "product_images/roulade.jpg"
+          "image": "product_images/roulade.jpg"
         }
       },
       {
@@ -685,7 +685,7 @@
           "price": 4.99,
           "category": 1,
           "rating": 4.6,
-          "image_url": "product_images/sausage.jpg"
+          "image": "product_images/sausage.jpg"
         }
       },
       {
@@ -698,7 +698,7 @@
           "price": 9.99,
           "category": 9,
           "rating": 4.8,
-          "image_url": "product_images/smoothies.jpg"
+          "image": "product_images/smoothies.jpg"
         }
       },
       {
@@ -711,7 +711,7 @@
           "price": 4.99,
           "category": 4,
           "rating": 4.9,
-          "image_url": "product_images/sourdough.jpg"
+          "image": "product_images/sourdough.jpg"
         }
       },
       {
@@ -724,7 +724,7 @@
           "price": 2.49,
           "category": 4,
           "rating": 4.5,
-          "image_url": "product_images/spaghetti.jpg"
+          "image": "product_images/spaghetti.jpg"
         }
       },
       {
@@ -737,7 +737,7 @@
           "price": 2.99,
           "category": 2,
           "rating": 4.4,
-          "image_url": "product_images/squash.jpg"
+          "image": "product_images/squash.jpg"
         }
       },
       {
@@ -750,7 +750,7 @@
           "price": 3.99,
           "category": 2,
           "rating": 4.8,
-          "image_url": "product_images/strawberry.jpg"
+          "image": "product_images/strawberry.jpg"
         }
       },
       {
@@ -763,7 +763,7 @@
           "price": 2.99,
           "category": 8,
           "rating": 4.5,
-          "image_url": "product_images/tangerine.jpg"
+          "image": "product_images/tangerine.jpg"
         }
       },
       {
@@ -776,7 +776,7 @@
           "price": 12.99,
           "category": 4,
           "rating": 4.9,
-          "image_url": "product_images/tiramisu.jpg"
+          "image": "product_images/tiramisu.jpg"
         }
       },
       {
@@ -789,7 +789,7 @@
           "price": 2.99,
           "category": 2,
           "rating": 4.6,
-          "image_url": "product_images/tomato.jpg"
+          "image": "product_images/tomato.jpg"
         }
       },
       {
@@ -802,7 +802,7 @@
           "price": 4.49,
           "category": 9,
           "rating": 4.2,
-          "image_url": "product_images/tomato_smoothie.jpg"
+          "image": "product_images/tomato_smoothie.jpg"
         }
       },
       {
@@ -815,7 +815,7 @@
           "price": 19.99,
           "category": 6,
           "rating": 4.7,
-          "image_url": "product_images/utility_knife.jpg"
+          "image": "product_images/utility_knife.jpg"
         }
       },
       {
@@ -828,7 +828,7 @@
           "price": 5.99,
           "category": 2,
           "rating": 4.5,
-          "image_url": "product_images/walnut.jpg"
+          "image": "product_images/walnut.jpg"
         }
       },
       {
@@ -841,7 +841,7 @@
           "price": 8.99,
           "category": 8,
           "rating": 4.6,
-          "image_url": "product_images/whisk.jpg"
+          "image": "product_images/whisk.jpg"
         }
       },
       {
@@ -854,7 +854,7 @@
           "price": 29.99,
           "category": 7,
           "rating": 4.8,
-          "image_url": "product_images/white_plates.jpg"
+          "image": "product_images/white_plates.jpg"
         }
       },
       {
@@ -867,7 +867,7 @@
           "price": 6.99,
           "category": 6,
           "rating": 4.7,
-          "image_url": "product_images/wooden_spoon.jpg"
+          "image": "product_images/wooden_spoon.jpg"
         }
       }
     ]

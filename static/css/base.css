@@ -13,9 +13,10 @@ body {
     background: url('/media/splash.jpg') no-repeat center center fixed;
     background-size: cover;
     color: var(--main-text-color);
-    font-family: var(--bs-body-font-family);  /* Using Bootstrap's default font */
+    font-family: var(--bs-body-font-family);
     display: flex;
     flex-direction: column;
+    position: relative; 
 }
 
 main {
@@ -63,6 +64,26 @@ main {
 
 .border-black {
     border: 1px solid var(--primary-bg-color) !important;
+}
+
+.overlay {
+    height: 100vh; 
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: #fff;
+    z-index: 2; 
+}
+
+.content-container {
+    position: relative;
+    z-index: 3; 
+}
+
+#main-nav {
+    position: relative;
+    z-index: 4;
 }
 
 /* Media Queries */
