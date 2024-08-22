@@ -98,6 +98,29 @@ footer {
     transform: translateY(-2px);
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
+
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: #fff;
+    z-index: 3;
+}
+
+.btt-link {
+    cursor: pointer;
+}
+
+.btt-link span {
+    font-size: 14px;
+    text-align: center;
+}
+
+.btt-link i {
+    font-size: 1.5rem;
+}
 /* End Buttons */
 
 .text-black {
@@ -132,28 +155,7 @@ header.fixed-top {
     height: var(--navbar-height-mobile);
 }
 
-.btt-button {
-    height: 42px;
-    width: 42px;
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    background-color: #fff;
-    z-index: 3;
-}
 
-.btt-link {
-    cursor: pointer;
-}
-
-.btt-link span {
-    font-size: 14px;
-    text-align: center;
-}
-
-.btt-link i {
-    font-size: 1.5rem;
-}
 
 .sort-select-wrapper {
     display: flex;
@@ -251,8 +253,7 @@ header.fixed-top {
     }
 
     .dropdown-menu {
-        background-color: transparent;
-        border: none;
+        background-color: #fff;
         padding-left: 15px;
     }
 
