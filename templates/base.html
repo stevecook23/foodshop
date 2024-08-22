@@ -37,7 +37,7 @@
     <!-- Custom JavaScript -->
     {% endblock %}
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <header class="container-fluid fixed-top bg-light">
         <div id="topnav" class="row d-none d-lg-flex">
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-start">
@@ -118,19 +118,18 @@
     
         {% block page_header %}
         {% endblock %}
-
-        {% block content %}
-            <main class="container mt-4">
-            <!-- Page-specific content will go here -->
-            </main>
-        {% endblock %}
+        <main class="flex-grow-1">
+            {% block content %}
+            
+            {% endblock %}
+        </main>
     </div>
 
     {% block postloadjs %}
     <!-- Custom JavaScript -->
     {% endblock %}
 
-    <footer class="mt-5 py-3 bg-light">
+    <footer class="py-3 py-3 bg-light">
         <div class="container text-center">
             <p>&copy; {% now "Y" %} FoodShop. All rights reserved.</p>
         </div>
