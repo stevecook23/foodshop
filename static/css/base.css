@@ -42,13 +42,13 @@ main {
 .content-container {
     flex: 1 0 auto;
     position: relative;
-    z-index: 2;  /* Above the overlay */
+    z-index: 2;
 }
 
 footer {
     flex-shrink: 0;
     position: relative;
-    z-index: 2;  /* Above the overlay */
+    z-index: 2;
 }
 
 .logo-font {
@@ -71,7 +71,7 @@ footer {
 }
 
 #home-page .container {
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: #ffffffb3;
     padding: 2rem;
     border-radius: 10px;
 }
@@ -112,7 +112,7 @@ footer {
     background-color: #343a40;
     color: #ffffff !important;
     transform: translateY(-2px);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px #00000033;
 }
 
 .btt-button {
@@ -122,7 +122,7 @@ footer {
     bottom: 10px;
     right: 10px;
     background-color: #fff;
-    z-index: 2;  /* Above the overlay */
+    z-index: 2;
 }
 
 .btt-link {
@@ -149,7 +149,7 @@ footer {
 
 .container-fluid {
     position: relative;
-    z-index: 2;  /* Above the overlay */
+    z-index: 2;
 }
 
 header.fixed-top {
@@ -157,7 +157,7 @@ header.fixed-top {
     top: 0;
     right: 0;
     left: 0;
-    z-index: 1030;  /* Keep this high z-index for the header */
+    z-index: 1030;
     height: var(--navbar-height-mobile);
 }
 
@@ -189,10 +189,10 @@ header.fixed-top {
 
 /* Bag content styles */
 .bag-container {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: #fffffff2;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    box-shadow: 0 0 15px #0000001a;
     margin-top: 2rem;
     position: relative;
     z-index: 4;
@@ -247,6 +247,28 @@ header.fixed-top {
     overflow-x: auto;
 }
 
+.product-subtotal {
+    padding-left: 15px;
+}
+
+.table-responsive .input-group {
+    max-width: 120px;
+}
+
+.table-responsive .remove-item {
+    display: block;
+    margin-top: 5px;
+}
+
+.subtotal-column {
+    min-width: 180px;
+    width: 180px;
+    max-width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /* Media Queries */
 @media (min-width: 1200px) {
     .container {
@@ -288,18 +310,18 @@ header.fixed-top {
 
     /* Mobile Navbar Styles */
     .navbar-collapse {
-        background-color: rgba(255, 255, 255, 0.95);
+        background-color: #fffffff2;
         padding: 20px;
         position: absolute;
         top: 100%;
         left: 0;
         right: 0;
         z-index: 1000;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 5px #0000001a;
     }
 
     .navbar-nav {
-        padding-left: 15px; /* Add some left padding */
+        padding-left: 15px;
     }
 
     .nav-item {
@@ -313,7 +335,7 @@ header.fixed-top {
     }
 
     .nav-link:hover, .nav-link:focus {
-        background-color: rgba(0,0,0,0.05);
+        background-color: #0000000d;
     }
 
     .dropdown-menu {
@@ -327,7 +349,7 @@ header.fixed-top {
     }
 
     .dropdown-item:hover, .dropdown-item:focus {
-        background-color: rgba(0,0,0,0.05);
+        background-color: #0000000d;
     }
 
     .bag-container {
@@ -336,7 +358,12 @@ header.fixed-top {
     }
 }
 
-/* Adjust sort select on smaller screens */
+@media (min-width: 768px) {
+    .table-responsive td {
+        vertical-align: middle;
+    }
+}
+
 @media (max-width: 767px) {
     .sort-select-wrapper {
         justify-content: center;
@@ -362,5 +389,54 @@ header.fixed-top {
 
     .quantity-form {
         justify-content: center;
+    }
+
+    /* Responsive styles for bag contents */
+    .bag-container {
+        padding: 10px;
+    }
+
+    .bag-container .row {
+        margin-left: -5px;
+        margin-right: -5px;
+    }
+
+    .bag-container .col-4,
+    .bag-container .col-8 {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .bag-container .input-group {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .bag-container .form-control.qty_input {
+        width: 40px;
+        padding: 0 2px;
+        text-align: center;
+    }
+
+    .bag-container .increment-qty,
+    .bag-container .decrement-qty {
+        padding: .25rem .5rem;
+    }
+
+    .bag-container .remove-item {
+        font-size: 0.8rem;
+    }
+    
+    .subtotal-column {
+        min-width: auto; /* Allows column to shrink on mobile */
+        width: auto;
+        max-width: none;
+    }
+    
+    /* Ensure the subtotal doesn't wrap on mobile */
+    .bag-container .row .col-8 p:last-child {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
