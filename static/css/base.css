@@ -187,6 +187,22 @@ header.fixed-top {
     object-fit: cover;
 }
 
+/* Still on images, these classes constrain the product images on product detail page */
+.image-container {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.image-container img {
+    max-width: 100%; /* Image will scale down if it's too wide */
+    max-height: 500px; /* Constrain the image height */
+    width: auto; /* Maintain aspect ratio */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: contain; /* Ensure the entire image is visible */
+    display: block;
+    margin: 0 auto; /* Center the image */
+}
+
 /* Bag content styles */
 .bag-container {
     background-color: #fffffff2;
@@ -365,6 +381,10 @@ header.fixed-top {
 }
 
 @media (max-width: 767px) {
+    .image-container img {
+        max-height: 300px;
+    }
+
     .sort-select-wrapper {
         justify-content: center;
     }
