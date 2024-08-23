@@ -460,3 +460,24 @@ header.fixed-top {
         text-overflow: ellipsis;
     }
 }
+
+@media (max-width: 400px) {
+    .mobile-top-header-container .list-inline-item {
+        margin-right: 0px; 
+        padding-top: 10px;
+    }
+
+    .mobile-top-header-container .list-inline-item:last-child {
+        margin-right: 0px;
+    }
+
+    .mobile-top-header-container .list-inline {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .mobile-top-header-container .nav-link {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+}
