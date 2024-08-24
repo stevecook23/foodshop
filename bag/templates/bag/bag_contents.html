@@ -6,21 +6,23 @@
             <thead class="text-black">
                 <tr>
                     <th scope="col">Product Info</th>
-                    <th scope="col">Price</th>
+                    <th scope="col" class="text-center">Price</th>
                     <th scope="col">Qty</th>
-                    <th scope="col"class="text-right subtotal-column">Subtotal</th>
+                    <th scope="col" class="text-center subtotal-column">Subtotal</th>
                 </tr>
             </thead>
-
+        
             {% for item in bag_items %}
                 <tr>
                     <td class="p-3 w-25">
-                        <img class="img-fluid rounded" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                        <div class="image-wrapper">
+                            <img class="img-fluid rounded" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                        </div>
                         <div class="product-info mt-2">
                             <p class="my-0"><strong>{{ item.product.name }}</strong></p>
                         </div>
                     </td>
-                    <td class="py-3">
+                    <td class="py-3 text-center">
                         <p class="my-0 product-price">£{{ item.product.price }}</p>
                     </td>
                     <td class="py-3 w-25">
@@ -46,13 +48,17 @@
                                 </div>
                             </div>
                         </form>
-                        <a class="remove-item text-danger" id="remove_{{ item.item_id }}"><small>Remove</small></a>
+                        <div class="update-remove-container">
+                            <a href="#" class="update-link text-info" data-item_id="{{ item.item_id }}"><small>Update</small></a>
+                            <a href="#" class="remove-item text-danger" id="remove_{{ item.item_id }}" data-item_id="{{ item.item_id }}"><small>Remove</small></a>
+                        </div>
                     </td>
-                    <td class="py-3 text-right subtotal-column">
+                    <td class="py-3 text-center subtotal-column">
                         <p class="my-0">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
                     </td>
                 </tr>
             {% endfor %}
+
         </table>
     </div>
 
@@ -61,7 +67,9 @@
         {% for item in bag_items %}
             <div class="row mb-4">
                 <div class="col-4">
-                    <img class="img-fluid rounded" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                    <div class="image-wrapper">
+                        <img class="img-fluid rounded" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                    </div>
                 </div>
                 <div class="col-8">
                     <p class="my-0"><strong>{{ item.product.name }}</strong></p>
@@ -83,9 +91,8 @@
                     </div>
                     <p class="mt-2 mb-1 text-right">Subtotal: £{{ item.product.price | calc_subtotal:item.quantity }}</p>
                     <p class="text-right">
-                        <a class="remove-item text-danger" id="remove_{{ item.item_id }}" data-product_id="{{ item.product.id }}">
-                            <small>Remove</small>
-                        </a>
+                        <a href="#" class="update-link text-info" data-item_id="{{ item.item_id }}"><small>Update</small></a>
+                        <a href="#" class="remove-item text-danger" id="remove_{{ item.item_id }}" data-item_id="{{ item.item_id }}"><small>Remove</small></a>
                     </p>
                 </div>
             </div>

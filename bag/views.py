@@ -29,35 +29,50 @@ def add_to_bag(request, item_id):
 
 def adjust_bag(request, item_id):
     """Adjust the quantity of the specified product to the specified amount"""
-    product = get_object_or_404(Product, pk=item_id)
-    quantity = int(request.POST.get('quantity'))
-    bag = request.session.get('bag', {})
+    try:
+        product = get_object_or_404(Product, pk=item_id)
+        quantity = int(request.POST.get('quantity', 0))
+        bag = request.session.get('bag', {})
 
-    if quantity > 0:
-        bag[item_id] = quantity
-    else:
-        bag.pop(item_id)
+        if quantity > 0:
+            bag[item_id] = quantity
+            messages.info(request, f'Updated {product.name} quantity to {bag[item_id]}')
+        else:
+            bag.pop(item_id, None)
+            messages.info(request, f'Removed {product.name} from your bag')
 
-    request.session['bag'] = bag
-    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        return JsonResponse(get_bag_data(request))
-    return redirect(reverse('view_bag'))
+        request.session['bag'] = bag
+
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            return JsonResponse(get_bag_data(request))
+        return redirect(reverse('view_bag'))
+
+    except Exception as e:
+        messages.error(request, f'Error updating bag: {str(e)}')
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            return JsonResponse({'error': str(e)}, status=400)
+        return redirect(reverse('view_bag'))
 
 def remove_from_bag(request, item_id):
     """Remove the item from the shopping bag"""
     try:
         product = get_object_or_404(Product, pk=item_id)
         bag = request.session.get('bag', {})
-        bag.pop(item_id)
-        request.session['bag'] = bag
+        
+        if item_id in bag:
+            bag.pop(item_id)
+            request.session['bag'] = bag
+            messages.success(request, f'Removed {product.name} from your bag')
+        else:
+            messages.error(request, f'Error removing item: {product.name} was not in your bag')
 
         if request.headers.get('x-requested-with') == 'XMLHttpRequest':
             return JsonResponse(get_bag_data(request))
         return HttpResponse(status=200)
 
     except Exception as e:
-        messages.error(request, f'Error removing item: {e}')
-        return HttpResponse(status=500)
+        messages.error(request, f'Error removing item: {str(e)}')
+        return JsonResponse({'error': str(e)}, status=500)
 
 def get_bag_data(request):
     bag_items = []
