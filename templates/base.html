@@ -36,7 +36,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Lightbox2 JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-
     {% endblock %}
 
     {% block extra_js %}
@@ -110,14 +109,22 @@
             </nav>
         </div>
     </header>
+    
     <div class="content-container">
         {% if messages %}
-            <div class="container mt-4">
+            <div class="message-container">
                 {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                        {{ message }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
+                    {% with message.level as level %}
+                        {% if level == 40 %}
+                            {% include 'includes/toasts/toast_error.html' %}
+                        {% elif level == 30 %}
+                            {% include 'includes/toasts/toast_warning.html' %}
+                        {% elif level == 25 %}
+                            {% include 'includes/toasts/toast_success.html' %}
+                        {% else %}
+                            {% include 'includes/toasts/toast_info.html' %}
+                        {% endif %}
+                    {% endwith %}
                 {% endfor %}
             </div>
         {% endif %}
@@ -132,7 +139,25 @@
     </div>
 
     {% block postloadjs %}
-    <!-- Custom JavaScript -->
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            var toastElList = [].slice.call(document.querySelectorAll('.toast'));
+            var toastList = toastElList.map(function(toastEl) {
+                return new bootstrap.Toast(toastEl, {
+                    autohide: false
+                });
+            });
+            toastList.forEach(toast => toast.show());
+    
+            // Dismiss all toasts when clicking anywhere on the page
+            document.addEventListener('click', function(event) {
+                // Check if the click is not on a toast or its children
+                if (!event.target.closest('.toast')) {
+                    toastList.forEach(toast => toast.hide());
+                }
+            });
+        });
+    </script>
     {% endblock %}
 
     <footer class="py-3 py-3 bg-light">
