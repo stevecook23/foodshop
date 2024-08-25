@@ -4,30 +4,16 @@ from django.db.models.functions import Lower
 from django.contrib import messages
 from django.urls import reverse
 from .models import Product, Category
-
+from operator import attrgetter
 
 def all_products(request):
-    products = Product.objects.all()
+    products = Product.objects.all().prefetch_related('categories')
     query = None
     categories = None
     sort = None
     direction = None
 
     if request.GET:
-        if 'sort' in request.GET:
-            sortkey = request.GET['sort']
-            sort = sortkey
-            if sortkey == 'name':
-                sortkey = 'lower_name'
-                products = products.annotate(lower_name=Lower('name'))
-            if sortkey == 'category':
-                sortkey = 'categories__name'
-            if 'direction' in request.GET:
-                direction = request.GET['direction']
-                if direction == 'desc':
-                    sortkey = f'-{sortkey}'
-            products = products.order_by(sortkey)
-            
         if 'category' in request.GET:
             categories = request.GET['category'].split(',')
             products = products.filter(categories__name__in=categories).distinct()
@@ -41,6 +27,30 @@ def all_products(request):
             
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
+
+        if 'sort' in request.GET:
+            sortkey = request.GET['sort']
+            sort = sortkey
+            if sortkey == 'name':
+                sortkey = 'lower_name'
+                products = products.annotate(lower_name=Lower('name'))
+            if sortkey == 'category':
+                sortkey = 'categories__name'
+            direction = request.GET.get('direction', 'asc')
+
+    # Convert to list to allow Python-based sorting
+    products = list(products)
+
+    # Sort the products
+    if sort:
+        if sort == 'category':
+            # Custom sorting for categories
+            def category_sort_key(product):
+                return sorted(category.name for category in product.categories.all())[0]
+            products.sort(key=category_sort_key, reverse=(direction == 'desc'))
+        else:
+            # General sorting
+            products.sort(key=attrgetter(sort), reverse=(direction == 'desc'))
 
     current_sorting = f'{sort}_{direction}'
 
