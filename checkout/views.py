@@ -1,10 +1,9 @@
+import stripe
 import json
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
-
-import stripe
 
 from .forms import OrderForm
 from .models import Order, OrderLineItem
@@ -37,13 +36,13 @@ def checkout(request):
         form_data = {
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
+            'phone_number': request.POST['phone_number'],
+            'country': request.POST['country'],
+            'postcode': request.POST['postcode'],
+            'town_or_city': request.POST['town_or_city'],
             'street_address1': request.POST['street_address1'],
             'street_address2': request.POST['street_address2'],
-            'town_or_city': request.POST['town_or_city'],
             'county': request.POST['county'],
-            'postcode': request.POST['postcode'],
-            'country': request.POST['country'],
-            'phone_number': request.POST['phone_number'],
         }
         order_form = OrderForm(form_data)
         if order_form.is_valid():
@@ -108,7 +107,7 @@ def checkout(request):
     template = 'checkout/checkout.html'
     context = {
         'order_form': order_form,
-        'stripe_public_key': stripe_public_key,
+        'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
         'client_secret': intent.client_secret,
     }
 
