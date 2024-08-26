@@ -235,3 +235,12 @@ if 'USE_AWS' in os.environ:
     #Override static and media URLs in production
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+    
+    
+if os.environ.get('USE_AWS') == 'True':
+    print("USE_AWS is True, applying AWS settings")
+    # rest of your AWS settings
+    print(f"AWS_STORAGE_BUCKET_NAME: {AWS_STORAGE_BUCKET_NAME}")
+    print(f"STATICFILES_STORAGE: {STATICFILES_STORAGE}")
+else:
+    print("USE_AWS is not True, AWS settings not applied")
