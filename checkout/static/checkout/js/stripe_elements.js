@@ -1,11 +1,3 @@
-/*
-    Core logic/payment flow for this comes from here:
-    https://stripe.com/docs/payments/accept-a-payment
-
-    CSS from here: 
-    https://stripe.com/docs/stripe-js
-*/
-
 var stripePublicKey = JSON.parse(document.getElementById('id_stripe_public_key').textContent);
 var clientSecret = JSON.parse(document.getElementById('id_client_secret').textContent);
 var stripe = Stripe(stripePublicKey);
