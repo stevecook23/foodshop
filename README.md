@@ -14,7 +14,7 @@ As a user, I want to be able to:
 + Receive an email confirming my purchase
 + Login or sign up at any point in this process
 + See previous orders in my profile
-+ Log out and know I'm logged out
++ Log out
 
 As an admin, in addition to the previous points, I want to be able to:
 + Add products to the store
