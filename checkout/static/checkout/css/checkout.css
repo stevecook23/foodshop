@@ -16,3 +16,27 @@ body {
 .overlay {
     display: none;
 }
+
+.StripeElement {
+    box-sizing: border-box;
+    height: 40px;
+    padding: 6px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background-color: white;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.StripeElement--focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.StripeElement--invalid {
+    border-color: #dc3545;
+}
+
+.StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
+}

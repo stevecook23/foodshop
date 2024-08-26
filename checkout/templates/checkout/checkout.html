@@ -3,6 +3,11 @@
 {% load crispy_forms_tags %}
 {% load bag_tools %}
 
+{% block extra_js %}
+    {{ block.super }}
+    <script src="https://js.stripe.com/v3/"></script>
+{% endblock %}
+
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
 {% endblock %}
