@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block page_header %}
-
 {% endblock %}
 
 {% block content %}
@@ -43,6 +42,14 @@
                         <small class="text-muted">No Rating</small>
                     {% endif %}
                     <p class="mt-3">{{ product.description|linebreaks }}</p>
+                    
+                    {% if request.user.is_superuser %}
+                        <small class="ml-3">
+                            <a href="{% url 'edit_product' product.id %}">Edit</a> | 
+                            <a class="text-danger" href="{% url 'delete_product' product.id %}" onclick="return confirmDelete('{{ product.name }}')">Delete</a>
+                        </small>
+                    {% endif %}
+                    
                     <form class="form" action="{% url 'add_to_bag' product.id %}" method="POST">
                         {% csrf_token %}
                         <div class="form-row">
@@ -94,5 +101,10 @@
 
 {% block postloadjs %}
 {{ block.super }}
+<script>
+    function confirmDelete(productName) {
+        return confirm(`Are you sure you want to delete ${productName}? This action cannot be undone.`);
+    }
+</script>
 <script src="{% static 'js/quantity_input_script.js' %}"></script>
 {% endblock %}
