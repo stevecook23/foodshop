@@ -514,6 +514,10 @@ header.fixed-top {
         overflow: hidden;
         text-overflow: ellipsis;
     }
+
+    .order-history {
+        padding-top: 20px;
+    }
 }
 
 @media (max-width: 400px) {
