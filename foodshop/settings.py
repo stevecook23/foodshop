@@ -124,11 +124,15 @@ SITE_ID = 1
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+# AllAuth Accounts Settings
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_RATE_LIMITS = {
-    'login_failed': {'max_attempts': 5, 'timeout_duration': 300},
+    "login": "5/5m",  # 5 login attempts per 5 minutes
+    "login_failed": "3/5m",  # 3 failed login attempts per 5 minutes
+    "signup": "5/5m",  # 5 signup attempts per 5 minutes
+    "send_mail": "2/5m",  # 2 mail sending attempts per 5 minutes
 }
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
@@ -137,6 +141,11 @@ ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_UNIQUE_USERNAME = True
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3
+
+ACCOUNT_RATE_LIMITS = ACCOUNT_RATE_LIMITS
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
