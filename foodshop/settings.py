@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'products',
     'bag',
     'checkout.apps.CheckoutConfig',
+    'crispy_forms',
+    'crispy_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -96,6 +98,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'foodshop.wsgi.application'
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
