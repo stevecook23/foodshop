@@ -311,9 +311,9 @@ header.fixed-top {
 .custom-toast {
     overflow: visible;
     border-radius: 0.25rem;
-    border: 1px solid rgba(0,0,0,.1);
-    box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);
-    background-color: rgba(255,255,255,.85);
+    border: 1px solid #0000001A;
+    box-shadow: 0 0.5rem 1rem #00000026;
+    background-color: #FFFFFFD9;
     backdrop-filter: blur(10px);
 }
 
