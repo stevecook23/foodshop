@@ -123,8 +123,6 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 # AllAuth Accounts Settings
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
@@ -135,6 +133,7 @@ ACCOUNT_RATE_LIMITS = {
     "signup": "5/5m",  # 5 signup attempts per 5 minutes
     "send_mail": "2/5m",  # 2 mail sending attempts per 5 minutes
 }
+
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 ACCOUNT_USERNAME_REQUIRED = True
@@ -194,6 +193,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 import django_heroku
 django_heroku.settings(locals())
 
+# AWS S3 Configuration
 STORAGES = {
     'default': {
         'BACKEND': 'custom_storages.MediaStorage',
@@ -226,8 +226,6 @@ MEDIAFILES_LOCATION = 'media'
 STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
 
-
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
@@ -238,23 +236,3 @@ STRIPE_CURRENCY = 'gbp'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WEBHOOK_SECRET = os.getenv('STRIPE_WEBHOOK_SECRET', '')
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-            'level': 'INFO',
-        },
-        'custom_storages': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-        },
-    },
-}
