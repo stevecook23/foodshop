@@ -39,12 +39,14 @@ Information to be added
 
 ## Upcoming features
 + Ratings system. I've included a rating for each product, but this is not connected to anything and is merely for aesthetic purposes at the moment. It would be good to include some sort of system for verified purchasers of products to be able to rate their purchases and for that rating to be applied sitewide. Ultimately, when I got to the end of the project, going back to add this in would have been very difficult for me, as the site was not built with this functionality in mind. Thus, for the scope of this project, it was not a feature I included.
++ 
 
 ## Technology
 + This website is made with
 + Databasing is provided by MongoDB
 + Deployment is from Heroku
-+ Images are handled by Cloudinary
++ Images are handled by AWS
++ Static files are handled by
 + Wireframe and prototyping images were made in Figma
 + Additional software used to create this website include Photoshop for image editing and Firefox for previewing, inspecting and bug testing, as well as Chrome for the Lighthouse report
 
