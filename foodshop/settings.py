@@ -194,6 +194,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 import django_heroku
 django_heroku.settings(locals())
 
+STORAGES = {
+    'default': {
+        'BACKEND': 'custom_storages.MediaStorage',
+    },
+    'staticfiles': {
+        'BACKEND': 'custom_storages.StaticStorage',
+    },
+}
 
 # Cache control
 AWS_S3_OBJECT_PARAMETERS = {
