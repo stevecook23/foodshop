@@ -48,13 +48,16 @@ var form = document.getElementById('payment-form');
 
 form.addEventListener('submit', function(ev) {
     ev.preventDefault();
-    card.update({ 'disabled': true});
+    card.update({ 'disabled': true });
     $('#submit-button').attr('disabled', true);
-    $('#payment-form').fadeToggle(100);
-    $('#loading-overlay').fadeToggle(100);
+
+    // Hide the form immediately
+    $('#payment-form').css('visibility', 'hidden');
+    
+    // Show the overlay immediately
+    $('#loading-overlay').css('display', 'block');
 
     var saveInfo = Boolean($('#id-save-info').attr('checked'));
-    // From using {% csrf_token %} in the form
     var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
     var postData = {
         'csrfmiddlewaretoken': csrfToken,
@@ -97,13 +100,16 @@ form.addEventListener('submit', function(ev) {
                 var errorDiv = document.getElementById('card-errors');
                 var html = `
                     <span class="icon" role="alert">
-                    <i class="fas fa-times"></i>
+                    <i class="bi bi-x-circle"></i>
                     </span>
                     <span>${result.error.message}</span>`;
                 $(errorDiv).html(html);
-                $('#payment-form').fadeToggle(100);
-                $('#loading-overlay').fadeToggle(100);
-                card.update({ 'disabled': false});
+
+                // Restore the form and hide the overlay
+                $('#payment-form').css('visibility', 'visible');
+                $('#loading-overlay').css('display', 'none');
+                
+                card.update({ 'disabled': false });
                 $('#submit-button').attr('disabled', false);
             } else {
                 if (result.paymentIntent.status === 'succeeded') {
@@ -112,7 +118,7 @@ form.addEventListener('submit', function(ev) {
             }
         });
     }).fail(function () {
-        // just reload the page, the error will be in django messages
+        // Reload the page, the error will be in Django messages
         location.reload();
     })
 });
