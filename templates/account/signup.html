@@ -22,13 +22,9 @@
             {% slot body %}
                 {% csrf_token %}
                 {% for field in form %}
-                    <div class="form-group">
+                    <div class="form-group{% if forloop.last %} mb-4{% endif %}">
                         {{ field.label_tag }}
-                        {% if field.field.widget.input_type == "checkbox" %}
-                            {{ field }}
-                        {% else %}
-                            {{ field.as_widget|add_class:"form-control" }}
-                        {% endif %}
+                        {{ field }}
                         {% if field.help_text %}
                             <small class="form-text text-muted">{{ field.help_text|safe }}</small>
                         {% endif %}

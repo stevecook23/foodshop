@@ -247,8 +247,10 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
 DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
 # Custom AllAuth Signup Page
-ACCOUNT_FORMS = {'signup': 'foodshop.forms.CustomSignupForm'}
+ACCOUNT_FORMS = {
+    'login': 'foodshop.forms.CustomLoginForm',
+    'signup': 'foodshop.forms.CustomSignupForm',
+}
 
 # Debug
-
 DEBUG = True
