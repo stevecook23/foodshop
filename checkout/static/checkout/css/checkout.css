@@ -2,7 +2,7 @@
     background-color: #FFFFFF;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 0 10px #00000019;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     position: relative;
     z-index: 5;
     min-height: 100vh;
@@ -17,7 +17,6 @@ body {
     display: none;
 }
 
-
 /* Overlay to prevent people clicking stuff during transaction */
 #loading-overlay {
     display: none;
@@ -26,7 +25,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #17a2b8;
+    background: rgba(23, 162, 184, 0.8);
     z-index: 9999;
 }
 
@@ -51,7 +50,6 @@ body {
     color: white;
     margin-top: 20px;
     font-size: 18px;
-    display: none; /* Hide the text initially */
 }
 
 @keyframes spin {
@@ -60,10 +58,18 @@ body {
 }
 
 /* Stripe Elements Style */
+#card-element {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    margin-bottom: 20px;
+}
+
 .StripeElement {
     box-sizing: border-box;
     height: 40px;
-    padding: 6px 12px;
+    padding: 10px 12px;
     border: 1px solid #ced4da;
     border-radius: 4px;
     background-color: white;
@@ -82,4 +88,14 @@ body {
 
 .StripeElement--webkit-autofill {
     background-color: #fefde5 !important;
+}
+
+/* Ensure the card element container is visible */
+#payment-form {
+    margin-top: 20px;
+}
+
+#card-errors {
+    color: #dc3545;
+    margin-top: 10px;
 }
