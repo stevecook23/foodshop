@@ -9,16 +9,16 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
-                <div class="image-container product-detail-image my-5">
-                        {% if product.image %}
-                            <a href="{{ product.image.url }}" data-lightbox="product-image" data-title="{{ product.name }}">
-                                <img src="{{ product.image.url }}" alt="{{ product.name }}">
-                            </a>
-                        {% else %}
-                            <a href="{{ MEDIA_URL }}noimage.png" data-lightbox="product-image" data-title="{{ product.name }}">
-                                <img src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
-                            </a>
-                        {% endif %}
+                <div class="image-container my-5">
+                    {% if product.image %}
+                        <a href="{{ product.image.url }}" data-lightbox="product-image" data-title="{{ product.name }}">
+                            <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                        </a>
+                    {% else %}
+                        <a href="{{ MEDIA_URL }}noimage.png" data-lightbox="product-image" data-title="{{ product.name }}">
+                            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                        </a>
+                    {% endif %}
                 </div>
             </div>
             <div class="col-12 col-md-6 col-lg-4">
@@ -79,7 +79,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-12 d-flex justify-content-center align-items-center">
+                            <div class="col-12">
                                 <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 mt-5">
                                     <span class="icon">
                                         <i class="bi bi-chevron-left"></i>
