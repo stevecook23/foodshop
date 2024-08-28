@@ -18,7 +18,7 @@ body {
 }
 
 
-/* Overlay to prevent people clicking stuff during transation */
+/* Overlay to prevent people clicking stuff during transaction */
 #loading-overlay {
     display: none;
     position: fixed;
@@ -26,7 +26,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(23, 162, 184, .85);
+    background: #17a2b8;
     z-index: 9999;
 }
 
@@ -35,7 +35,6 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 0;
     height: 100%;
 }
 
@@ -52,6 +51,7 @@ body {
     color: white;
     margin-top: 20px;
     font-size: 18px;
+    display: none; /* Hide the text initially */
 }
 
 @keyframes spin {

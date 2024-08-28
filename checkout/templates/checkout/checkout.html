@@ -10,21 +10,17 @@
 {% block extra_js %}
     {{ block.super }}
     <script src="https://js.stripe.com/v3/"></script>
-    <script src="{% static 'checkout/js/stripe_elements.js' %}" defer></script>
-{% endblock %}
-
-{% block page_header %}
-
 {% endblock %}
 
 {% block content %}
     <div class="overlay"></div>
-    <div id="loading-overlay" class="loading-overlay">
+    <div id="loading-overlay">
         <div class="loading-spinner">
             <div class="spinner"></div>
             <p class="loading-text">Processing your payment...</p>
         </div>
     </div>
+
     <div class="container">
         <div class="row">
             <div class="col">
