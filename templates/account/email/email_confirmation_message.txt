@@ -9,5 +9,5 @@ You're receiving this email because user {{ user_display }} has given your email
 To confirm this is correct, go to {{ activate_url }}
 {% endblocktrans %}
 {% blocktrans with site_name=current_site.name site_domain=current_site.domain %}Thank you for using FoodShop!
-FoodShop{% endblocktrans %}
+{% endblocktrans %}
 {% endautoescape %}
