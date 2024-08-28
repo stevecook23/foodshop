@@ -246,20 +246,9 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
 DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
-DEBUG = True
+# Custom AllAuth Signup Page
+ACCOUNT_FORMS = {'signup': 'foodshop.forms.CustomSignupForm'}
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'django.db.backends': {
-            'level': 'DEBUG',
-            'handlers': ['console'],
-        },
-    },
-}
+# Debug
+
+DEBUG = True
