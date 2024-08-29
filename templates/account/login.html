@@ -53,4 +53,8 @@
     {% if SOCIALACCOUNT_ENABLED %}
         {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
     {% endif %}
+    
+    <div class="mt-3">
+        <p>{% trans "Didn't receive the verification email?" %} <a href="{% url 'account_email_verification_sent' %}">{% trans "Click here to resend" %}</a></p>
+    </div>
 {% endblock content %}
