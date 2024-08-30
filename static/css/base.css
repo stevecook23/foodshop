@@ -617,8 +617,8 @@ header.fixed-top {
     }
 
     .mobile-top-header-container .nav-link {
-        padding-left: 5px;
-        padding-right: 5px;
+        padding-left: 5px !important;
+        padding-right: 5px !important;
     }
 
     .product-detail-image .image-wrapper img {
