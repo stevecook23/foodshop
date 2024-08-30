@@ -68,8 +68,12 @@ def all_products(request):
 def product_detail(request, product_id):
     """ A view to show individual product details """
     product = get_object_or_404(Product, pk=product_id)
+     # Get related products (from the same category, excluding the current product)
+    related_products = Product.objects.filter(categories__in=product.categories.all()).exclude(id=product_id).distinct()[:4]
+    
     context = {
         'product': product,
+        'related_products': related_products,
     }
     return render(request, 'products/product_detail.html', context)
 
