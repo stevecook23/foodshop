@@ -191,7 +191,7 @@ header.fixed-top {
 /* Styles for the product detail image */
 .product-detail-image {
     width: 100%;
-    max-width: 386px; /* Adjust as needed */
+    max-width: 400px; /* Adjust as needed */
     margin: 0 auto;
 }
 
@@ -523,6 +523,10 @@ header.fixed-top {
     .table-responsive td {
         vertical-align: middle;
     }
+
+    .product-detail-image {
+        max-width: 400px; /* Maintain max-width at larger screens */
+    }
 }
 
 @media (min-width: 768px) and (max-width: 991.98px) {
@@ -532,15 +536,6 @@ header.fixed-top {
 }
 
 @media (max-width: 767px) {
-    /* Images */
-    .product-detail-image {
-        max-width: 100%; /* Allow it to take full width */
-    }
-
-    .product-detail-image .image-wrapper img {
-        max-height: 300px; /* Restrict height for small screens */
-    }
-
     /* Bag content styles */
     .sort-select-wrapper {
         justify-content: center;
@@ -618,21 +613,32 @@ header.fixed-top {
     }
 
     /* Product Detail Page */
+    .product-detail-image {
+        max-width: 400px; /* Set the desired width on smaller screens */
+        margin: 0 auto; /* Center the image */
+    }
+    
+    .product-detail-image .image-wrapper {
+        padding-top: 100%; /* Maintain the square aspect ratio */
+    }
+
+    .product-detail-image .image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Ensure the image covers the entire wrapper */
+        object-position: center; /* Center the image within the wrapper */
+        max-height: none; /* Remove any height restriction */
+    }
+
     .image-container {
         max-width: 100%;
         margin-top: 0px !important; /* Override the default margin */
         margin-bottom: 0px !important; /* Override the default margin */
     }
-
-    .image-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-    }
     
     .product-details-container {
-        margin-top: 1rem;
+        padding-top: 0px;
+        margin-top: 0px;
     }
 
     /* Mini cards for 'Related products' */
@@ -667,7 +673,11 @@ header.fixed-top {
     }
 
     /* Product Detail Page */
-    .image-container img {
-        max-height: 250px;
+    .product-detail-image {
+        max-width: 100%; /* Allow it to take full width on very small screens */
+    }
+
+    .product-detail-image .image-wrapper img {
+        max-height: none; /* Ensure no restriction on height */
     }
 }
