@@ -164,7 +164,6 @@ header.fixed-top {
 .sort-select-wrapper {
     display: flex;
     justify-content: flex-end;
-
 }
 
 .sort-select-wrapper select {
@@ -172,14 +171,14 @@ header.fixed-top {
 }
 
 /* Common styles for image wrappers (1:1 aspect ratio) */
-.image-wrapper, .product-image-wrapper, .toast-image-wrapper {
+.image-wrapper, .product-image-wrapper, .toast-image-wrapper, .mini-image-wrapper {
     position: relative;
     width: 100%;
     padding-top: 100%; /* Creates a 1:1 aspect ratio, ensuring the container is square */
     overflow: hidden;
 }
 
-.image-wrapper img, .product-image-wrapper img, .toast-image-wrapper img {
+.image-wrapper img, .product-image-wrapper img, .toast-image-wrapper img, .mini-image-wrapper img {
     position: absolute;
     top: 0;
     left: 0;
@@ -339,7 +338,7 @@ header.fixed-top {
     opacity: 0.5;
 }
   
-  .btn-close:hover {
+.btn-close:hover {
     color: #000;
     text-decoration: none;
     opacity: 0.75;
@@ -511,7 +510,7 @@ header.fixed-top {
 
     /* Images */
     .product-detail-image {
-        max-width: 471.5px;
+        max-width: 471.5px; /* Adjust the container size at this breakpoint */
     }
 
     /* Product Detail Page */
@@ -621,13 +620,11 @@ header.fixed-top {
 
     /* Product Detail Page */
     .image-container {
-        padding-top: 100%;
+        max-width: 100%;
     }
 
     .image-container img {
-        object-fit: cover;
-        width: 100%;
-        height: auto;
+        max-height: 300px;
     }
     
     .product-details-container {
