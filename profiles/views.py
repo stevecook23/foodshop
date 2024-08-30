@@ -7,14 +7,18 @@ from .models import UserProfile
 from .forms import UserProfileForm
 
 @login_required
-def order_history(request):
-    profile = request.user.userprofile
-    orders = profile.orders.all().order_by('-date')
-    
-    template = 'profiles/order_history.html'
+def order_history(request, order_number):
+    order = get_object_or_404(Order, order_number=order_number)
+
+    messages.info(request, (
+        f'This is a past confirmation for order number {order_number}. '
+        'A confirmation email was sent on the order date.'
+    ))
+
+    template = 'checkout/checkout_success.html'
     context = {
-        'orders': orders,
-        'on_profile_page': True  # This can be used in the template to highlight the current page in navigation
+        'order': order,
+        'from_profile': True,
     }
 
     return render(request, template, context)
@@ -39,7 +43,7 @@ def profile(request):
     template = 'profiles/profile.html'
     context = {
         'form': form,
-        'orders': orders,
+        'orders': profile.orders.all(),
         'on_profile_page': True
     }
 
