@@ -511,7 +511,7 @@ header.fixed-top {
 
     /* Images */
     .product-detail-image {
-        max-width: 471.5px; /* Adjust the container size at this breakpoint */
+        max-width: 471.5px;
     }
 
     /* Product Detail Page */
@@ -621,11 +621,13 @@ header.fixed-top {
 
     /* Product Detail Page */
     .image-container {
-        max-width: 100%;
+        padding-top: 100%;
     }
 
     .image-container img {
-        max-height: 300px;
+        object-fit: cover;
+        width: 100%;
+        height: auto;
     }
     
     .product-details-container {
