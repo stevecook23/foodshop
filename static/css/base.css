@@ -395,19 +395,25 @@ header.fixed-top {
     font-size: 0.8rem;
 }
 
-.mini-card .card-img-top {
-    height: 100px;
+.mini-card .product-image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; /* Creates a 1:1 aspect ratio */
+    overflow: hidden;
+}
+
+.mini-card .product-image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
 }
 
 .mini-card .card-body,
 .mini-card .card-footer {
     padding: 0.5rem;
-}
-
-.mini-card .product-image-wrapper {
-    height: 100px;
-    overflow: hidden;
 }
 
 /* Media Queries */
