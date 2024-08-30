@@ -27,37 +27,102 @@ This site comprises several Python apps working together, each one fulfilling a 
 
 The images presented here are not final, and are indicative of what a user might see at the point in prototyping that this section of the Readme was written. Colours and designs are not final and are subject to change after prototyping and user testing.
 
-### Main Page
-![main page](readme_docs/prototype/main_page.png "main page")
+### Home Page
+![home page](readme_docs/prototype/wireframe_home.png "home page")
 
-Information to be added, and further sections
+As with all the pages, this page will have a header containing the menu (collapsed in mobile view) and a footer. The header will also contain the search bar and bag-related links.
+
+The home page is designed to be a splash screen with a single image.
+
+### All Products Page
+![products page](readme_docs/prototype/wireframe_products.png "products page")
+
+This page, in addition to the ever-present header and footer, will contain square Bootstrap cards with product images and details. On smaller sizes of screen, this will be 3, 2 or 1 cards per row.
+
+### Product Details Page
+![product details page](readme_docs/prototype/wireframe_productdetail.png "product details page")
+
+Clicking in to any of the products on the previous page will bring the user to a products detail page. As well as more detailed information about the product, 'related products' will be displayed at the bottom, in smaller mini-cards, and again limited in number by screen size
+
+### Checkout Page
+![checkout page](readme_docs/prototype/wireframe_checkout.png "checkout page")
+
+A checkout page, with a place for the customer to fill in their information on the left, and a summary of their order on the right. Checkout would be by Stripe.
+
+### Profile Page
+![profile page](readme_docs/prototype/wireframe_profile.png "profile page")
+
+This page would have a place for registered and logged-in users to edit their address details, and view their previous orders.
 
 ### Entity Relationship Document
-![entity_relationship_document](readme_docs/testcases/entity_relationship_document.png "Entity Relationship Document")
-
-Information to be added
+![entity_relationship_document](readme_docs/prototype/entity_relationship_document.png "Entity Relationship Document")
 
 ## Upcoming features
 + Ratings system. I've included a rating for each product, but this is not connected to anything and is merely for aesthetic purposes at the moment. It would be good to include some sort of system for verified purchasers of products to be able to rate their purchases and for that rating to be applied sitewide. Ultimately, when I got to the end of the project, going back to add this in would have been very difficult for me, as the site was not built with this functionality in mind. Thus, for the scope of this project, it was not a feature I included.
 + Social logins. Similarly, I wanted to include social logins.
++ Saved addresses; not currently implemented, the ability to add addresses saved on profile would be useful.
 
 ## Technology
-+ This website is made with
++ This website is made in its entirety using Visual Studio Code for Desktop
 + Databasing is provided by MongoDB
 + Deployment is from Heroku
 + Images are handled by AWS
-+ Static files are handled by
++ Static files are handled by AWS
 + Wireframe and prototyping images were made in Figma
-+ Additional software used to create this website include Photoshop for image editing and Firefox for previewing, inspecting and bug testing, as well as Chrome for the Lighthouse report
++ Additional software used to create this website includes Chrome for previewing, inspecting and bug testing
 
 ## Testing
-### Test Case: Main Page (not logged in)
-+ Testcases to be added here
+This section details manual testing that I undertook as part of my project. Because of the length of this section in text form, I have opted not to include screenshots of each test.
 
-![testcase1](readme_docs/testcases/testcase1.png "Test Case 1")
+### Test Case: Navigation and Responsiveness
++ Click on each navigation link (Home, Products, About, Contact, etc.); each should lead to the correct page
++ Resize browser window from desktop to tablet to mobile sizes; layout should adjust appropriately
++ On mobile view, verify that the hamburger menu appears and functions correctly
++ Scroll through long pages; header should remain fixed at the top for easy navigation
+
+### Test Case: Product Listings
++ Navigate to the Products page; all products should be visible and properly formatted
++ Use the category filter; only products from the selected category should display
++ Use the sort function (e.g., price low to high); products should reorder correctly
++ Click on a product; it should lead to the correct product detail page
+
+### Test Case: Product Detail Page
++ Verify that all product information (name, price, description, image) is displayed correctly
++ Adjust the quantity using the + and - buttons; quantity should update accordingly
++ Click 'Add to Bag'; product should be added to the shopping bag
++ If logged in as admin, verify that 'Edit' and 'Delete' options are visible and functional
+
+### Test Case: Shopping Bag
++ Add multiple items to the bag; all items should be visible in the bag
++ Adjust quantities in the bag; subtotal and grand total should update correctly
++ Remove an item from the bag; it should disappear and totals should update
++ Click 'Secure Checkout'; it should lead to the checkout page
+
+### Test Case: Checkout Process
++ Fill out the checkout form; all required fields should be validated
++ Use an invalid credit card number; an error message should appear
++ Use a valid credit card number; the order should process successfully
++ After successful checkout, verify that a confirmation email is received
+
+### Test Case: User Account
++ Register a new account; verify that the registration process works
++ Log in with the new account; should be redirected to the home page
++ Navigate to the profile page; personal information and order history should be visible
++ Update profile information; changes should be saved successfully
+
+### Test Case: Admin Functionality
++ Log in as an admin user
++ Navigate to the product management page; should be able to add a new product
++ Edit an existing product; changes should be saved and reflected on the site
++ Delete a product; it should be removed from the product listings
+
+### Test Case: Search Functionality
++ Use the search bar with a valid product name; relevant products should appear in results
++ Search with a category name; products from that category should be displayed
++ Perform an empty search; it should return all products or an appropriate message
 
 ### Bugs discovered
-+ Bugs to be added here
++ During development, the number one bug I encountered was to do with image dimensions. This is something that came up frequently, as there were lots of places where I wanted images to be square, but there were also lots of ways for this to fail. In the end, an image-wrapper system made the most sense.
 
 ## Code validation
 
@@ -111,7 +176,10 @@ You should now be able to view the app locally.
 
 ## Credits
 ### Text Content
-Text for the site was generated by me.
+Text for the site was created by me.
 
 ### Media
-All media on this site was sourced from [pxhere.com ](https://pxhere.com/) and is used free of royalty or copyright, and with permission, under the Creative Commons Zero (CC0) license. 
+All media on this site was sourced from [pxhere.com ](https://pxhere.com/) and is used free of royalty or copyright, and with permission, under the Creative Commons Zero (CC0) license. Individual image attribution is not required under that licence.
+
+### Code Attribution
+Some code can be attributed to sources other than myself, such as the Stripe code; where code has been used from other sources, it has been explicitly called out within the code. Some similarities exist to the Code Institute project 'Boutique Ado', upon which this project was based. However, I have used exclusively up-to-date packages where possible, and updated throughout from Bootstrap 4 to Bootstrap 5, where the 'Boutique Ado' project used Bootstrap 4 and many outdated packages.
