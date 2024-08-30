@@ -390,19 +390,19 @@ header.fixed-top {
     margin: 0 0.5rem;
 }
 
-/* Mini cards for 'Related products' */
+/* Mini-card specific styles */
 .mini-card {
     font-size: 0.8rem;
 }
 
-.mini-card .product-image-wrapper {
+.mini-card .mini-image-wrapper {
     position: relative;
     width: 100%;
-    padding-top: 100%; /* Creates a 1:1 aspect ratio */
+    padding-top: 100%;
     overflow: hidden;
 }
 
-.mini-card .product-image-wrapper img {
+.mini-card .mini-image-wrapper img {
     position: absolute;
     top: 0;
     left: 0;
