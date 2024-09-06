@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import UserProfile
 from .forms import UserProfileForm
+from checkout.models import Order
+from products.models import Favourite
 
 @login_required
 def order_history(request, order_number):
@@ -47,4 +49,16 @@ def profile(request):
         'on_profile_page': True
     }
 
+    return render(request, template, context)
+
+@login_required
+def view_favourites(request):
+    """ Display the user's favourite products. """
+    favorites = Favourite.objects.filter(user=request.user)
+    
+    template = 'profiles/favourites.html'
+    context = {
+        'favourites': favorites,
+    }
+    
     return render(request, template, context)
