@@ -1,13 +1,15 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from .models import Product, Category, Favourite
+from .models import Product, Category, Favourite, Review
 from .forms import ProductForm
 from operator import attrgetter
 from django.http import JsonResponse
+from checkout.models import Order
+from .forms import ReviewForm
 
 def all_products(request):
     products = Product.objects.all().prefetch_related('categories')
@@ -160,3 +162,57 @@ def toggle_favourite(request, product_id):
         'is_favourite': is_favourite,
         'message': message
     })
+    
+def product_detail(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    reviews = product.reviews.all()[:3]  # Get the 3 most recent reviews
+    related_products = Product.objects.filter(categories__in=product.categories.all()).exclude(id=product_id).distinct()[:4]
+    
+    context = {
+        'product': product,
+        'reviews': reviews,
+        'related_products': related_products,
+    }
+    return render(request, 'products/product_detail.html', context)
+
+@login_required
+def add_review(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.product = product
+            review.user = request.user
+            review.save()
+            return redirect('product_detail', product_id=product_id)
+    else:
+        form = ReviewForm()
+    return render(request, 'products/review_form.html', {'form': form, 'product': product})
+
+@login_required
+def edit_review(request, review_id):
+    review = get_object_or_404(Review, pk=review_id)
+    if request.user != review.user:
+        return HttpResponse("You don't have permission to edit this review.", status=403)
+    if request.method == 'POST':
+        form = ReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            return redirect('product_detail', product_id=review.product.id)
+    else:
+        form = ReviewForm(instance=review)
+    return render(request, 'products/review_form.html', {'form': form, 'product': review.product, 'edit': True})
+
+@login_required
+def delete_review(request, review_id):
+    review = get_object_or_404(Review, pk=review_id)
+    if request.user != review.user:
+        return HttpResponse("You don't have permission to delete this review.", status=403)
+    product_id = review.product.id
+    review.delete()
+    return redirect('product_detail', product_id=product_id)
+
+def get_review(request, review_id):
+    review = get_object_or_404(Review, pk=review_id)
+    return render(request, 'products/review_detail.html', {'review': review})

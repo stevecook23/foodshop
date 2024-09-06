@@ -176,7 +176,7 @@ You should now be able to view the app locally.
 
 ## Credits
 ### Text Content
-Text for the site was created by me.
+Text for the site is original and is by the site's creator.
 
 ### Media
 All media on this site was sourced from [pxhere.com ](https://pxhere.com/) and is used free of royalty or copyright, and with permission, under the Creative Commons Zero (CC0) license. Individual image attribution is not required under that licence.

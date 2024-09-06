@@ -98,71 +98,115 @@
                 </div>
             </div>
         </div>
-    </div>
     
-    <!-- Related Products Section -->
-    {% if related_products %}
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-10 offset-1">
-                    <h2 class="logo-font mb-4">Related Products</h2>
-                </div>
+    
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
+                <h2 class="mb-4">Recent Reviews</h2>
+                {% if reviews %}
+                    {% for review in reviews %}
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ review.headline }}</h5>
+                                <p class="card-text">{{ review.review_text|truncatechars:100 }}</p>
+                                <a href="#" class="btn btn-primary btn-sm open-review" data-review-id="{{ review.id }}">Read More</a>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">By {{ review.user.username }} on {{ review.created_at|date:"d M Y" }}</small>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No reviews yet. Be the first to review this product!</p>
+                {% endif %}
+                
+                {% if user.is_authenticated %}
+                    <a href="{% url 'add_review' product.id %}" class="btn btn-success mt-3">Write a Review</a>
+                {% endif %}
             </div>
-            <div class="row">
-                <div class="product-container col-10 offset-1">
-                    <div class="row">
-                        {% for product in related_products %}
-                            <div class="col-6 col-md-4 col-lg-3 col-xl-3 mb-3">
-                                <div class="card h-100 border-0 mini-card">
-                                    <div class="mini-image-wrapper">
-                                        {% if product.image %}
-                                        <a href="{% url 'product_detail' product.id %}">
-                                            <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
-                                        </a>
-                                        {% else %}
-                                        <a href="{% url 'product_detail' product.id %}">
-                                            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
-                                        </a>
-                                        {% endif %}
-                                    </div>
-                                    <div class="card-body pb-0">
-                                        <p class="mb-0 small">{{ product.name }}</p>
-                                    </div>
-                                    <div class="card-footer bg-white pt-0 border-0 text-left">
-                                        <div class="row">
-                                            <div class="col">
-                                                <p class="lead mb-0 text-left font-weight-bold small">£{{ product.price }}</p>
-                                                {% if product.rating %}
-                                                    <small class="text-muted"><i class="bi bi-star-fill mr-1"></i>{{ product.rating }} / 5</small>
-                                                {% else %}
-                                                    <small class="text-muted">No Rating</small>
-                                                {% endif %}
+        </div>
+        
+
+        <!-- Related Products Section -->
+        {% if related_products %}
+            <div class="container-fluid mt-5">
+                <div class="row">
+                    <div class="col-10 offset-1">
+                        <h2 class="logo-font mb-4">Related Products</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="product-container col-10 offset-1">
+                        <div class="row">
+                            {% for product in related_products %}
+                                <div class="col-6 col-md-4 col-lg-3 col-xl-3 mb-3">
+                                    <div class="card h-100 border-0 mini-card">
+                                        <div class="mini-image-wrapper">
+                                            {% if product.image %}
+                                            <a href="{% url 'product_detail' product.id %}">
+                                                <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                            </a>
+                                            {% else %}
+                                            <a href="{% url 'product_detail' product.id %}">
+                                                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                                            </a>
+                                            {% endif %}
+                                        </div>
+                                        <div class="card-body pb-0">
+                                            <p class="mb-0 small">{{ product.name }}</p>
+                                        </div>
+                                        <div class="card-footer bg-white pt-0 border-0 text-left">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <p class="lead mb-0 text-left font-weight-bold small">£{{ product.price }}</p>
+                                                    {% if product.rating %}
+                                                        <small class="text-muted"><i class="bi bi-star-fill mr-1"></i>{{ product.rating }} / 5</small>
+                                                    {% else %}
+                                                        <small class="text-muted">No Rating</small>
+                                                    {% endif %}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            {% if forloop.counter|divisibleby:2 %}
-                                <div class="col-12 d-sm-none mb-3">
-                                    <hr>
-                                </div>
-                            {% endif %}
-                            {% if forloop.counter|divisibleby:3 %}
-                                <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-3">
-                                    <hr>
-                                </div>
-                            {% endif %}
-                            {% if forloop.counter|divisibleby:4 %}
-                                <div class="col-12 d-none d-lg-block mb-3">
-                                    <hr>
-                                </div>
-                            {% endif %}
-                        {% endfor %}
+                                {% if forloop.counter|divisibleby:2 %}
+                                    <div class="col-12 d-sm-none mb-3">
+                                        <hr>
+                                    </div>
+                                {% endif %}
+                                {% if forloop.counter|divisibleby:3 %}
+                                    <div class="col-12 d-none d-sm-block d-md-block d-lg-none mb-3">
+                                        <hr>
+                                    </div>
+                                {% endif %}
+                                {% if forloop.counter|divisibleby:4 %}
+                                    <div class="col-12 d-none d-lg-block mb-3">
+                                        <hr>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        
+            
+        <!-- Review Lightbox -->
+        <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="reviewModalLabel">Review</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="reviewModalBody">
+                        <!-- This is the space where the review will go -->
                     </div>
                 </div>
             </div>
         </div>
-    {% endif %}
+    </div>
 {% endblock %}
 
 {% block postloadjs %}
@@ -196,6 +240,14 @@
             error: function(xhr, status, error) {
                 console.error('An error occurred. Please try again.'); // Log the error instead of showing a toast
             }
+        });
+    });
+    $('.open-review').on('click', function(e) {
+        e.preventDefault();
+        var reviewId = $(this).data('review-id');
+        $.get('/products/review/' + reviewId + '/', function(data) {
+            $('#reviewModalBody').html(data);
+            $('#reviewModal').modal('show');
         });
     });
 </script>
