@@ -109,7 +109,10 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ review.headline }}</h5>
                                 <p class="card-text">{{ review.review_text|truncatechars:100 }}</p>
-                                <a href="#" class="btn btn-primary btn-sm open-review" data-review-id="{{ review.id }}">Read More</a>
+                                {% if review.user == request.user %}
+                                <a href="{% url 'edit_review' review.id %}" class="btn btn-outline-secondary btn-sm me-2">Edit</a>
+                                {% endif %}
+                                <button class="btn btn-primary btn-sm open-review" data-review-id="{{ review.id }}">Read More</button>
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">By {{ review.user.username }} on {{ review.created_at|date:"d M Y" }}</small>
@@ -193,15 +196,19 @@
         
             
         <!-- Review Lightbox -->
-        <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+        <div id="reviewModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="reviewModalLabel">Review</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <div class="modal-body" id="reviewModalBody">
-                        <!-- This is the space where the review will go -->
+                    <div id="reviewModalBody" class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -211,43 +218,102 @@
 
 {% block postloadjs %}
 {{ block.super }}
-<script>
-    function confirmDelete(productName) {
-        return confirm(`Are you sure you want to delete ${productName}? This action cannot be undone.`);
-    }
-</script>
-<script src="{% static 'js/quantity_input_script.js' %}"></script>
 <script type="text/javascript">
-    $('#favourite-btn').click(function(e) {
-        e.preventDefault();
-        var productId = $(this).data('product-id');
-        $.ajax({
-            url: '/products/toggle_favourite/' + productId + '/',
-            type: 'POST',
-            data: {
-                csrfmiddlewaretoken: '{{ csrf_token }}',
-            },
-            success: function(response) {
-                if (response.is_favourite) {
-                    $('#favourite-btn i').removeClass('bi-heart').addClass('bi-heart-fill');
-                    $('#favourite-text').text('Remove from Favourites');
-                } else {
-                    $('#favourite-btn i').removeClass('bi-heart-fill').addClass('bi-heart');
-                    $('#favourite-text').text('Add to Favourites');
+    $(document).ready(function() {
+        $('.favourite-button').click(function(e) {
+            e.preventDefault();
+            var productId = $(this).data('product-id');
+            var url = '/products/favourite/' + productId + '/';
+            var csrfToken = "{{ csrf_token }}";
+
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {
+                    'csrfmiddlewaretoken': csrfToken,
+                },
+                success: function(response) {
+                    if (response.status === 'added') {
+                        $('#favourite-text').text('Remove from Favourites');
+                    } else if (response.status === 'removed') {
+                        $('#favourite-text').text('Add to Favourites');
+                    }
                 }
-                console.log(response.message); // Log the message instead of showing a toast
-            },
-            error: function(xhr, status, error) {
-                console.error('An error occurred. Please try again.'); // Log the error instead of showing a toast
+            });
+        });
+
+        // Updated code for review modal
+        const modal = document.getElementById('reviewModal');
+        const modalBody = document.getElementById('reviewModalBody');
+        
+        if (!modal) {
+            console.error('Modal element not found');
+        }
+
+        $(document).on('click', '.open-review', function(e) {
+            e.preventDefault();
+            const reviewId = $(this).data('review-id');
+            console.log('Review button clicked. Review ID:', reviewId);
+
+            if (!reviewId) {
+                console.error('Review ID is undefined');
+                return;
+            }
+
+            // AJAX call to get the full review text
+            $.ajax({
+                url: `/products/get_review/${reviewId}/`,
+                type: 'GET',
+                success: function(response) {
+                    console.log('AJAX Success:', response);
+                    modalBody.innerHTML = `
+                        <h5>${response.headline}</h5>
+                        <p>${response.review_text}</p>
+                        <p class="text-muted">By ${response.user} on ${response.created_at}</p>
+                    `;
+                    
+                    const bootstrapModal = new bootstrap.Modal(modal);
+                    bootstrapModal.show();
+                    console.log('Modal should be visible now');
+
+                    // Center the modal
+                    $(modal).on('shown.bs.modal', function () {
+                        $(this).find('.modal-dialog').css({
+                            'margin-top': function () {
+                                return ($(window).height() - $(this).height()) / 2;
+                            }
+                        });
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error("An error occurred:", xhr.status, error);
+                    alert("Unable to load the full review. Please try again later.");
+                }
+            });
+        });
+
+        // Add event listener for modal close button
+        modal.querySelector('.close').addEventListener('click', function() {
+            bootstrap.Modal.getInstance(modal).hide();
+        });
+
+        // Add event listener for close button in modal footer
+        modal.querySelector('.modal-footer .btn-secondary').addEventListener('click', function() {
+            bootstrap.Modal.getInstance(modal).hide();
+        });
+
+        // Add event listener for Esc key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape" && bootstrap.Modal.getInstance(modal)) {
+                bootstrap.Modal.getInstance(modal).hide();
             }
         });
-    });
-    $('.open-review').on('click', function(e) {
-        e.preventDefault();
-        var reviewId = $(this).data('review-id');
-        $.get('/products/review/' + reviewId + '/', function(data) {
-            $('#reviewModalBody').html(data);
-            $('#reviewModal').modal('show');
+
+        // Add event listener for clicking outside the modal
+        $(modal).on('click', function(e) {
+            if ($(e.target).is(modal)) {
+                bootstrap.Modal.getInstance(modal).hide();
+            }
         });
     });
 </script>

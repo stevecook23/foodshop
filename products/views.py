@@ -193,8 +193,6 @@ def add_review(request, product_id):
 @login_required
 def edit_review(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
-    if request.user != review.user:
-        return HttpResponse("You don't have permission to edit this review.", status=403)
     if request.method == 'POST':
         form = ReviewForm(request.POST, instance=review)
         if form.is_valid():
@@ -202,7 +200,13 @@ def edit_review(request, review_id):
             return redirect('product_detail', product_id=review.product.id)
     else:
         form = ReviewForm(instance=review)
-    return render(request, 'products/review_form.html', {'form': form, 'product': review.product, 'edit': True})
+    
+    return render(request, 'products/review_form.html', {
+        'form': form, 
+        'product': review.product, 
+        'edit': True,
+        'review': review
+    })
 
 @login_required
 def delete_review(request, review_id):
@@ -214,5 +218,11 @@ def delete_review(request, review_id):
     return redirect('product_detail', product_id=product_id)
 
 def get_review(request, review_id):
-    review = get_object_or_404(Review, pk=review_id)
-    return render(request, 'products/review_detail.html', {'review': review})
+    review = get_object_or_404(Review, id=review_id)
+    data = {
+        'headline': review.headline,
+        'review_text': review.review_text,
+        'user': review.user.username,
+        'created_at': review.created_at.strftime('%d %b %Y')
+    }
+    return JsonResponse(data)

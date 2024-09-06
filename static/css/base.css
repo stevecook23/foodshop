@@ -414,6 +414,17 @@ header.fixed-top {
     padding: 0.5rem;
 }
 
+/* Modal specific styles */
+.modal-dialog {
+    margin: 1.75rem auto;
+    max-height: calc(100vh - 3.5rem);
+    overflow-y: auto;
+}
+
+.modal-backdrop {
+    display: none;
+}
+
 /* Media Queries */
 @media (min-width: 1200px) {
     .container {
