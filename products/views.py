@@ -4,9 +4,10 @@ from django.db.models.functions import Lower
 from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from .models import Product, Category
+from .models import Product, Category, Favourite
 from .forms import ProductForm
 from operator import attrgetter
+from django.http import JsonResponse
 
 def all_products(request):
     products = Product.objects.all().prefetch_related('categories')
@@ -141,3 +142,25 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
+
+@login_required
+def toggle_favourite(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    favourite, created = Favourite.objects.get_or_create(user=request.user, product=product)
+    
+    if not created:
+        favourite.delete()
+        is_favourite = False
+        message = f'{product.name} has been removed from your favourites.'
+    else:
+        is_favourite = True
+        message = f'{product.name} has been added to your favourites.'
+    
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        return JsonResponse({
+            'is_favourite': is_favourite,
+            'message': message
+        })
+    
+    messages.success(request, message)
+    return redirect(reverse('product_detail', args=[product.id]))
