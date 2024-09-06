@@ -432,6 +432,15 @@ header.fixed-top {
     }
 }
 
+@media (min-width: 992px) and (max-width: 1199px) {
+    .product-details-container {
+        margin-top: 2rem !important;
+    }
+    .product-details-container .form-group {
+        width: 100% !important;
+    }
+}
+
 @media (min-width: 992px) {
     body {
         padding-top: var(--navbar-height-desktop);
