@@ -106,7 +106,6 @@
             <div class="row">
                 <div class="col-10 offset-1">
                     <h2 class="logo-font mb-4">Related Products</h2>
-                    <hr class="w-50 mb-1">
                 </div>
             </div>
             <div class="row">
@@ -192,35 +191,10 @@
                     $('#favourite-btn i').removeClass('bi-heart-fill').addClass('bi-heart');
                     $('#favourite-text').text('Add to Favourites');
                 }
-                // Display a toast notification using the existing system
-                var toastHtml = `
-                    {% include 'includes/toasts/toast_info.html' %}
-                `.replace('{{ message }}', response.message);
-                
-                $('.message-container').html(toastHtml);
-                var toastElList = [].slice.call(document.querySelectorAll('.toast'));
-                var toastList = toastElList.map(function(toastEl) {
-                    return new bootstrap.Toast(toastEl, {
-                        autohide: false
-                    });
-                });
-                toastList.forEach(toast => toast.show());
+                console.log(response.message); // Log the message instead of showing a toast
             },
             error: function(xhr, status, error) {
-                // Handle error
-                var errorMessage = 'An error occurred. Please try again.';
-                var toastHtml = `
-                    {% include 'includes/toasts/toast_error.html' %}
-                `.replace('{{ message }}', errorMessage);
-                
-                $('.message-container').html(toastHtml);
-                var toastElList = [].slice.call(document.querySelectorAll('.toast'));
-                var toastList = toastElList.map(function(toastEl) {
-                    return new bootstrap.Toast(toastEl, {
-                        autohide: false
-                    });
-                });
-                toastList.forEach(toast => toast.show());
+                console.error('An error occurred. Please try again.'); // Log the error instead of showing a toast
             }
         });
     });

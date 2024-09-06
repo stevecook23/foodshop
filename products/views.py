@@ -156,11 +156,7 @@ def toggle_favourite(request, product_id):
         is_favourite = True
         message = f'{product.name} has been added to your favourites.'
     
-    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        return JsonResponse({
-            'is_favourite': is_favourite,
-            'message': message
-        })
-    
-    messages.success(request, message)
-    return redirect(reverse('product_detail', args=[product.id]))
+    return JsonResponse({
+        'is_favourite': is_favourite,
+        'message': message
+    })
