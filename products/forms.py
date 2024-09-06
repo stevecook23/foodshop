@@ -22,5 +22,5 @@ class ReviewForm(forms.ModelForm):
         fields = ['headline', 'review_text']
         widgets = {
             'headline': forms.TextInput(attrs={'class': 'form-control'}),
-            'review_text': forms.Textarea(attrs={'class': 'form-control', 'rows': 4}),
+            'review_text': forms.Textarea(attrs={'class': 'form-control', 'rows': 4, 'maxlength': 500}),
         }
