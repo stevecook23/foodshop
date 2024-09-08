@@ -73,14 +73,14 @@
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="user-options">
                             {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}
-                                    <a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a>
+                                    <li><a href="{% url 'add_product' %}" class="dropdown-item">Product Management</a></li>
                                 {% endif %}
-                                <a href="{% url 'profile' %}" class="dropdown-item">My Profile</a>
-                                <a href="{% url 'view_favourites' %}" class="dropdown-item">My Favourites</a>
-                                <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                                <li><a href="{% url 'profile' %}" class="dropdown-item">My Profile</a></li>
+                                <li><a href="{% url 'view_favourites' %}" class="dropdown-item">My Favourites</a></li>
+                                <li><a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a></li>
                             {% else %}
-                                <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-                                <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+                                <li><a href="{% url 'account_signup' %}" class="dropdown-item">Register</a></li>
+                                <li><a href="{% url 'account_login' %}" class="dropdown-item">Login</a></li>
                             {% endif %}
                         </ul>
                     </li>
@@ -141,7 +141,7 @@
     </div>
 
     {% block postloadjs %}
-    <script type="text/javascript">
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
             var toastElList = [].slice.call(document.querySelectorAll('.toast'));
             var toastList = toastElList.map(function(toastEl) {
