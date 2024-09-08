@@ -38,7 +38,7 @@ def all_products(request):
             if not query:
                 messages.error(request, "You didn't enter any search criteria!")
                 return redirect(reverse('products'))
-
+            
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
@@ -98,7 +98,7 @@ def all_products(request):
 def product_detail(request, product_id):
     """ A view to show individual product details """
     product = get_object_or_404(Product, pk=product_id)
-    # Get related products (from the same category, excluding the current product)
+    reviews = product.reviews.all()[:3]  # Get the 3 most recent reviews
     related_products = Product.objects.filter(categories__in=product.categories.all()).exclude(id=product_id).distinct()[:4]
 
     # Check if the product is in the user's favourites
@@ -108,6 +108,7 @@ def product_detail(request, product_id):
 
     context = {
         'product': product,
+        'reviews': reviews,
         'related_products': related_products,
         'is_favourite': is_favourite,
     }
@@ -201,18 +202,6 @@ def toggle_favourite(request, product_id):
     })
 
 
-def product_detail(request, product_id):
-    product = get_object_or_404(Product, pk=product_id)
-    reviews = product.reviews.all()[:3]  # Get the 3 most recent reviews
-    related_products = Product.objects.filter(categories__in=product.categories.all()).exclude(id=product_id).distinct()[:4]
-    
-    context = {
-        'product': product,
-        'reviews': reviews,
-        'related_products': related_products,
-    }
-    return render(request, 'products/product_detail.html', context)
-
 @login_required
 def add_review(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
@@ -247,7 +236,6 @@ def edit_review(request, review_id):
         'review': review
     })
 
-
 @login_required
 def delete_review(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
@@ -256,7 +244,6 @@ def delete_review(request, review_id):
     product_id = review.product.id
     review.delete()
     return redirect('product_detail', product_id=product_id)
-
 
 def get_review(request, review_id):
     review = get_object_or_404(Review, id=review_id)

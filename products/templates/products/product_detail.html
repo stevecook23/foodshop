@@ -231,6 +231,21 @@
 <script src="{% static 'js/product_detail_quantity.js' %}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
+        // Function to update favourite UI
+        function updateFavouriteUI(isFavourite) {
+            if (isFavourite) {
+                $('#favourite-text').text('Remove from Favourites');
+                $('#favourite-btn i').removeClass('bi-heart').addClass('bi-heart-fill');
+            } else {
+                $('#favourite-text').text('Add to Favourites');
+                $('#favourite-btn i').removeClass('bi-heart-fill').addClass('bi-heart');
+            }
+        }
+
+        // Initialize favourite status on page load
+        var initialIsFavourite = {{ is_favourite|yesno:"true,false" }};
+        updateFavouriteUI(initialIsFavourite);
+
         $('#favourite-btn').click(function(e) {
             e.preventDefault();
             var productId = $(this).data('product-id');
@@ -243,13 +258,7 @@
                     'X-CSRFToken': '{{ csrf_token }}'
                 },
                 success: function(data) {
-                    if (data.is_favourite) {
-                        $('#favourite-text').text('Remove from Favourites');
-                        $('#favourite-btn i').removeClass('bi-heart').addClass('bi-heart-fill');
-                    } else {
-                        $('#favourite-text').text('Add to Favourites');
-                        $('#favourite-btn i').removeClass('bi-heart-fill').addClass('bi-heart');
-                    }
+                    updateFavouriteUI(data.is_favourite);
                 },
                 error: function(xhr, errmsg, err) {
                     console.log(errmsg);
@@ -258,7 +267,7 @@
         });
     });
 
-    // Updated code for review modal
+    // Code for review modal
     const modal = document.getElementById('reviewModal');
     const modalBody = document.getElementById('reviewModalBody');
     
