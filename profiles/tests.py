@@ -1,9 +1,11 @@
+"""Tests for the profiles app."""
 from django.test import TestCase, Client
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.contrib.messages import get_messages
 from .models import UserProfile
 from .forms import UserProfileForm
+
 
 class UserProfileModelTestCase(TestCase):
     def setUp(self):
@@ -18,6 +20,7 @@ class UserProfileModelTestCase(TestCase):
         self.profile.default_phone_number = '1234567890'
         self.profile.save()
         self.assertEqual(self.profile.default_phone_number, '1234567890')
+
 
 class UserProfileFormTestCase(TestCase):
     def test_form_valid(self):
@@ -37,6 +40,7 @@ class UserProfileFormTestCase(TestCase):
         }
         form = UserProfileForm(data=form_data)
         self.assertFalse(form.is_valid())
+
 
 class ProfileViewTestCase(TestCase):
     def setUp(self):
@@ -62,6 +66,7 @@ class ProfileViewTestCase(TestCase):
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(str(messages[0]), 'Profile updated successfully')
 
+
 class OrderHistoryViewTestCase(TestCase):
     def setUp(self):
         self.client = Client()
@@ -72,6 +77,7 @@ class OrderHistoryViewTestCase(TestCase):
         response = self.client.get(reverse('order_history'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'profiles/order_history.html')
+
 
 class SignalTestCase(TestCase):
     def test_profile_creation_signal(self):

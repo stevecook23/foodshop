@@ -1,6 +1,8 @@
+"""Forms for the checkout app."""
 from django import forms
 from django.utils.translation import gettext_lazy as _
 from .models import Order
+
 
 class OrderForm(forms.ModelForm):
     class Meta:

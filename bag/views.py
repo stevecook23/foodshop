@@ -1,14 +1,17 @@
+"""Views for the shopping bag app"""
+from decimal import Decimal
 from django.shortcuts import render, redirect, reverse, HttpResponse, get_object_or_404
 from django.contrib import messages
 from django.http import JsonResponse
 from django.conf import settings
-from decimal import Decimal
 from django.template.loader import render_to_string
 from products.models import Product
+
 
 def view_bag(request):
     """ A view that renders the bag contents page """
     return render(request, 'bag/bag.html')
+
 
 def add_to_bag(request, item_id):
     """ Add a quantity of the specified product to the shopping bag """
@@ -26,6 +29,7 @@ def add_to_bag(request, item_id):
 
     request.session['bag'] = bag
     return redirect(redirect_url)
+
 
 def adjust_bag(request, item_id):
     """Adjust the quantity of the specified product to the specified amount"""
@@ -53,12 +57,13 @@ def adjust_bag(request, item_id):
             return JsonResponse({'error': str(e)}, status=400)
         return redirect(reverse('view_bag'))
 
+
 def remove_from_bag(request, item_id):
     """Remove the item from the shopping bag"""
     try:
         product = get_object_or_404(Product, pk=item_id)
         bag = request.session.get('bag', {})
-        
+
         if item_id in bag:
             bag.pop(item_id)
             request.session['bag'] = bag
@@ -73,6 +78,7 @@ def remove_from_bag(request, item_id):
     except Exception as e:
         messages.error(request, f'Error removing item: {str(e)}')
         return JsonResponse({'error': str(e)}, status=500)
+
 
 def get_bag_data(request):
     bag_items = []
@@ -96,9 +102,9 @@ def get_bag_data(request):
     else:
         delivery = 0
         free_delivery_delta = 0
-    
+
     grand_total = delivery + total
-    
+
     context = {
         'bag_items': bag_items,
         'total': total,

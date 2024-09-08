@@ -1,12 +1,12 @@
-from django.contrib.auth.decorators import login_required
-from checkout.models import Order
+"""Views for the profiles app"""
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import UserProfile
-from .forms import UserProfileForm
 from checkout.models import Order
 from products.models import Favourite
+from .models import UserProfile
+from .forms import UserProfileForm
+
 
 @login_required
 def order_history(request, order_number):
@@ -25,6 +25,7 @@ def order_history(request, order_number):
 
     return render(request, template, context)
 
+
 @login_required
 def profile(request):
     """ Display the user's profile. """
@@ -39,8 +40,6 @@ def profile(request):
             messages.error(request, 'Update failed. Please ensure the form is valid.')
     else:
         form = UserProfileForm(instance=profile)
-    
-    orders = profile.orders.all()
 
     template = 'profiles/profile.html'
     context = {
@@ -55,10 +54,10 @@ def profile(request):
 def view_favourites(request):
     """ Display the user's favourite products. """
     favorites = Favourite.objects.filter(user=request.user)
-    
+
     template = 'profiles/favourites.html'
     context = {
         'favourites': favorites,
     }
-    
+
     return render(request, template, context)

@@ -1,3 +1,4 @@
+"""This module contains urls for the checkout application."""
 from django.urls import path
 from . import views
 from .webhooks import webhook

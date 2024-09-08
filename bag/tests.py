@@ -1,9 +1,11 @@
+"""Tests for the bag app views and context processors."""
+from decimal import Decimal
 from django.test import TestCase, Client
 from django.urls import reverse
 from django.contrib.messages import get_messages
 from django.conf import settings
-from decimal import Decimal
 from products.models import Product
+
 
 class BagViewsTestCase(TestCase):
     def setUp(self):
@@ -52,6 +54,7 @@ class BagViewsTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(self.client.session['bag'], {})
 
+
 class BagContextProcessorTestCase(TestCase):
     def setUp(self):
         self.client = Client()
@@ -69,21 +72,26 @@ class BagContextProcessorTestCase(TestCase):
 
         # Get the bag page
         response = self.client.get(reverse('view_bag'))
-        
+
         # Check the context
         self.assertEqual(response.context['total'], Decimal('20.00'))
         self.assertEqual(response.context['product_count'], 2)
         self.assertEqual(len(response.context['bag_items']), 1)
-        
+
         # Check delivery calculations
         if Decimal('20.00') < settings.FREE_DELIVERY_THRESHOLD:
-            expected_delivery = Decimal('20.00') * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
-            expected_free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - Decimal('20.00')
+            expected_delivery = (Decimal('20.00') * 
+                                Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100))
+            expected_free_delivery_delta = (settings.FREE_DELIVERY_THRESHOLD - 
+                                            Decimal('20.00'))
         else:
             expected_delivery = Decimal('0.00')
             expected_free_delivery_delta = Decimal('0.00')
-        
+
         self.assertEqual(response.context['delivery'], expected_delivery)
-        self.assertEqual(response.context['free_delivery_delta'], expected_free_delivery_delta)
-        self.assertEqual(response.context['free_delivery_threshold'], settings.FREE_DELIVERY_THRESHOLD)
-        self.assertEqual(response.context['grand_total'], Decimal('20.00') + expected_delivery)
+        self.assertEqual(response.context['free_delivery_delta'],
+                         expected_free_delivery_delta)
+        self.assertEqual(response.context['free_delivery_threshold'],
+                         settings.FREE_DELIVERY_THRESHOLD)
+        self.assertEqual(response.context['grand_total'],
+                         Decimal('20.00') + expected_delivery)

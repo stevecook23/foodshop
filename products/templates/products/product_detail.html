@@ -34,7 +34,7 @@
                     <button id="favourite-btn" class="btn btn-link text-danger ps-0" data-product-id="{{ product.id }}">
                         <i class="bi {% if product in user.favourite_set.all %}bi-heart-fill{% else %}bi-heart{% endif %}"></i>
                             <span id="favourite-text">
-                                {% if is_favorite %}
+                                {% if is_favourite %}
                                     Remove from Favourites
                                 {% else %}
                                     Add to Favourites

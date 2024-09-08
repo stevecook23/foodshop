@@ -1,21 +1,24 @@
+"""Views for the products app"""
+from operator import attrgetter
+from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required, user_passes_test
-from .models import Product, Category, Favourite, Review
-from .forms import ProductForm
-from operator import attrgetter
-from django.http import JsonResponse
-from checkout.models import Order
-from .forms import ReviewForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.template.loader import render_to_string
+from .models import Product, Category, Favourite, Review
+from .forms import ProductForm
+from checkout.models import Order
+from .forms import ReviewForm
+
 
 def superuser_required(view_func):
     decorated_view_func = user_passes_test(lambda u: u.is_superuser, login_url='home')(view_func)
     return decorated_view_func
+
 
 def all_products(request):
     products = Product.objects.all().prefetch_related('categories')
@@ -35,7 +38,7 @@ def all_products(request):
             if not query:
                 messages.error(request, "You didn't enter any search criteria!")
                 return redirect(reverse('products'))
-            
+
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
 
@@ -91,23 +94,25 @@ def all_products(request):
 
     return render(request, 'products/products.html', context)
 
+
 def product_detail(request, product_id):
     """ A view to show individual product details """
     product = get_object_or_404(Product, pk=product_id)
     # Get related products (from the same category, excluding the current product)
     related_products = Product.objects.filter(categories__in=product.categories.all()).exclude(id=product_id).distinct()[:4]
-    
-    # Check if the product is in the user's favorites
-    is_favorite = False
+
+    # Check if the product is in the user's favourites
+    is_favourite = False
     if request.user.is_authenticated:
-        is_favorite = Favourite.objects.filter(user=request.user, product=product).exists()
-    
+        is_favourite = Favourite.objects.filter(user=request.user, product=product).exists()
+
     context = {
         'product': product,
         'related_products': related_products,
-        'is_favorite': is_favorite,
+        'is_favourite': is_favourite,
     }
     return render(request, 'products/product_detail.html', context)
+
 
 @superuser_required
 def add_product(request):
@@ -126,13 +131,14 @@ def add_product(request):
             messages.error(request, 'Failed to add product. Please ensure the form is valid.')
     else:
         form = ProductForm()
-        
+
     template = 'products/add_product.html'
     context = {
         'form': form,
     }
 
     return render(request, template, context)
+
 
 @superuser_required
 def edit_product(request, product_id):
@@ -162,6 +168,7 @@ def edit_product(request, product_id):
 
     return render(request, template, context)
 
+
 @superuser_required
 def delete_product(request, product_id):
     """ Delete a product from the store """
@@ -174,11 +181,12 @@ def delete_product(request, product_id):
     messages.success(request, 'Product deleted!')
     return redirect(reverse('products'))
 
+
 @login_required
 def toggle_favourite(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     favourite, created = Favourite.objects.get_or_create(user=request.user, product=product)
-    
+
     if not created:
         favourite.delete()
         is_favourite = False
@@ -186,12 +194,13 @@ def toggle_favourite(request, product_id):
     else:
         is_favourite = True
         message = f'{product.name} has been added to your favourites.'
-    
+
     return JsonResponse({
         'is_favourite': is_favourite,
         'message': message
     })
-    
+
+
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     reviews = product.reviews.all()[:3]  # Get the 3 most recent reviews
@@ -219,6 +228,7 @@ def add_review(request, product_id):
         form = ReviewForm()
     return render(request, 'products/review_form.html', {'form': form, 'product': product})
 
+
 @login_required
 def edit_review(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
@@ -229,13 +239,14 @@ def edit_review(request, review_id):
             return redirect('product_detail', product_id=review.product.id)
     else:
         form = ReviewForm(instance=review)
-    
+
     return render(request, 'products/review_form.html', {
-        'form': form, 
-        'product': review.product, 
+        'form': form,
+        'product': review.product,
         'edit': True,
         'review': review
     })
+
 
 @login_required
 def delete_review(request, review_id):
@@ -245,6 +256,7 @@ def delete_review(request, review_id):
     product_id = review.product.id
     review.delete()
     return redirect('product_detail', product_id=product_id)
+
 
 def get_review(request, review_id):
     review = get_object_or_404(Review, id=review_id)

@@ -1,8 +1,10 @@
+"""Custom storages settings for project"""
+import logging
 from django.conf import settings
 from storages.backends.s3boto3 import S3Boto3Storage
-import logging
 
 logger = logging.getLogger(__name__)
+
 
 class StaticStorage(S3Boto3Storage):
     location = settings.STATICFILES_LOCATION
@@ -15,6 +17,7 @@ class StaticStorage(S3Boto3Storage):
         except Exception as e:
             logger.error(f"Error saving {name} to S3: {str(e)}")
             raise
+
 
 class MediaStorage(S3Boto3Storage):
     location = settings.MEDIAFILES_LOCATION

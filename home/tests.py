@@ -1,6 +1,8 @@
+"""Tests for the home app."""
 from django.test import TestCase, Client
 from django.urls import reverse, resolve
 from home.views import home
+
 
 class HomePageTests(TestCase):
     def setUp(self):
@@ -23,6 +25,7 @@ class HomePageTests(TestCase):
         response = self.client.get(reverse('home'))
         self.assertNotContains(
             response, 'Hi there! I should not be on the page.')
+
 
 class HomeUrlTests(TestCase):
     def test_home_url_resolves_home_view(self):
