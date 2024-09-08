@@ -130,7 +130,12 @@
                 {% endif %}
                 
                 {% if user.is_authenticated %}
-                    <a href="{% url 'add_review' product.id %}" class="btn btn-dark mt-3">Write a Review</a>
+                    <div class="col-12 text-center">
+                        <a href="{% url 'add_review' product.id %}" class="btn btn-dark mt-3">Write a Review</a>
+                    </div>
+                    <div class="col-12 text-center">
+                        <a href="{% url 'all_reviews' product.id %}" class="btn btn-secondary mt-3">See All Reviews</a>
+                    </div>
                 {% endif %}
             </div>
         </div>

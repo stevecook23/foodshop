@@ -236,6 +236,7 @@ def edit_review(request, review_id):
         'review': review
     })
 
+
 @login_required
 def delete_review(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
@@ -254,3 +255,24 @@ def get_review(request, review_id):
         'created_at': review.created_at.strftime('%d %b %Y')
     }
     return JsonResponse(data)
+
+
+def all_reviews(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    reviews = Review.objects.filter(product=product).order_by('-created_at')
+    
+    paginator = Paginator(reviews, 10)  # Show 10 reviews per page
+    page = request.GET.get('page')
+    
+    try:
+        reviews = paginator.page(page)
+    except PageNotAnInteger:
+        reviews = paginator.page(1)
+    except EmptyPage:
+        reviews = paginator.page(paginator.num_pages)
+    
+    context = {
+        'product': product,
+        'reviews': reviews
+    }
+    return render(request, 'products/all_reviews.html', context)
