@@ -6,11 +6,12 @@ class CategoryAdmin(admin.ModelAdmin):
     search_fields = ['name', 'friendly_name']
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'get_categories', 'price', 'rating', 'sku', 'tags')
+    list_display = ('name', 'get_categories', 'price', 'rating', 'sku', 'tags', 'thumbnail')
     list_filter = ('categories', 'rating')
     search_fields = ['name', 'description', 'sku', 'tags']
     ordering = ('sku',)
     filter_horizontal = ('categories',)
+    fields = ('name', 'categories', 'description', 'price', 'rating', 'thumbnail', 'sku', 'tags')
 
     def get_categories(self, obj):
         return ", ".join([c.name for c in obj.categories.all()])
