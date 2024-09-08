@@ -10,6 +10,7 @@ from operator import attrgetter
 from django.http import JsonResponse
 from checkout.models import Order
 from .forms import ReviewForm
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def superuser_required(view_func):
     decorated_view_func = user_passes_test(lambda u: u.is_superuser, login_url='home')(view_func)
@@ -63,11 +64,26 @@ def all_products(request):
 
     current_sorting = f'{sort}_{direction}'
 
+    # Pagination
+    paginator = Paginator(products, 12)  # Show 12 products per page
+    page = request.GET.get('page')
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            return JsonResponse({'has_next': False})
+        products = paginator.page(paginator.num_pages)
+
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        return render(request, 'products/product_list.html', {'products': products})
+
     context = {
         'products': products,
         'search_term': query,
         'current_categories': categories,
-        'current_sorting': current_sorting,
+        'current_sorting': f'{sort}_{direction}' if sort else None,
     }
 
     return render(request, 'products/products.html', context)
