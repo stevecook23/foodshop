@@ -98,7 +98,7 @@ def all_products(request):
 def product_detail(request, product_id):
     """ A view to show individual product details """
     product = get_object_or_404(Product, pk=product_id)
-    reviews = product.reviews.all()[:3]  # Get the 3 most recent reviews
+    reviews = product.reviews.all()[:2]  # Get the 2 most recent reviews
     related_products = Product.objects.filter(categories__in=product.categories.all()).exclude(id=product_id).distinct()[:4]
 
     # Check if the product is in the user's favourites
