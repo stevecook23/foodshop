@@ -11,7 +11,7 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ['name', 'description', 'sku', 'tags']
     ordering = ('sku',)
     filter_horizontal = ('categories',)
-    fields = ('name', 'categories', 'description', 'price', 'rating', 'thumbnail', 'sku', 'tags')
+    fields = ('name', 'categories', 'description', 'price', 'rating', 'image', 'thumbnail', 'sku', 'tags')
 
     def get_categories(self, obj):
         return ", ".join([c.name for c in obj.categories.all()])

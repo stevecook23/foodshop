@@ -14,6 +14,7 @@ import os
 import dj_database_url
 from dotenv import load_dotenv
 from pathlib import Path
+from storages.backends.s3boto3 import S3Boto3Storage
 
 # Load environment variables
 load_dotenv()
@@ -218,10 +219,29 @@ AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
+# Making sure images go into the correct folder
+class StaticStorage(S3Boto3Storage):
+    location = 'static'
+    default_acl = 'public-read'
+
+class MediaStorage(S3Boto3Storage):
+    location = 'media'
+    default_acl = 'public-read'
+    file_overwrite = False
+
+    def get_object_parameters(self, name):
+        params = super().get_object_parameters(name)
+        if name.startswith('product_thumbnails/'):
+            params['CacheControl'] = 'max-age=86400'  # 1 day cache
+        elif name.startswith('product_images/'):
+            params['CacheControl'] = 'max-age=31536000'  # 1 year cache
+        return params
+
+
 # Static and media files
-STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+STATICFILES_STORAGE = 'foodshop.settings.StaticStorage'
 STATICFILES_LOCATION = 'static'
-DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+DEFAULT_FILE_STORAGE = 'foodshop.settings.MediaStorage'
 MEDIAFILES_LOCATION = 'media'
 
 # Override static and media URLs in production
