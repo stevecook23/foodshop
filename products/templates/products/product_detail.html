@@ -149,7 +149,11 @@
                                 <div class="col-6 col-md-4 col-lg-3 col-xl-3 mb-3">
                                     <div class="card h-100 border-0 mini-card">
                                         <div class="mini-image-wrapper">
-                                            {% if product.image %}
+                                            {% if product.thumbnail %}
+                                            <a href="{% url 'product_detail' product.id %}">
+                                                <img class="card-img-top img-fluid" src="{{ product.thumbnail.url }}" alt="{{ product.name }}">
+                                            </a>
+                                            {% elif product.image %}
                                             <a href="{% url 'product_detail' product.id %}">
                                                 <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
                                             </a>
