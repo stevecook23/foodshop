@@ -19,7 +19,13 @@
                     <div class="row">
                         <div class="col-3 my-1">
                             <div class="toast-image-wrapper">
-                                <img src="{{ item.product.image.url }}">
+                                {% if item.product.thumbnail %}
+                                    <img src="{{ item.product.thumbnail.url }}" alt="{{ item.product.name }}">
+                                {% elif item.product.image %}
+                                    <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                                {% else %}
+                                    <img src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
+                                {% endif %}
                             </div>
                         </div>
                         <div class="col-9">
