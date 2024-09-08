@@ -15,12 +15,15 @@ As a user, I want to be able to:
 + Login or sign up at any point in this process
 + See previous orders in my profile
 + Log out
++ Review products, and have CRUD functionality over my reviews
++ Log favourites, and see my favourites in one place
 
 As an admin, in addition to the previous points, I want to be able to:
 + Add products to the store
 + Edit existing products
 + Delete products
 + View customer orders
++ Have CRUD functionality over customer reviews in case of malicious use
 
 ## Features and Wireframe
 This site comprises several Python apps working together, each one fulfilling a different set of user stories. For example, the Checkout experience is handled entirely by one Python app, with multiple screens and experiences.
@@ -123,17 +126,22 @@ This section details manual testing that I undertook as part of my project. Beca
 
 ### Bugs discovered
 + During development, the number one bug I encountered was to do with image dimensions. This is something that came up frequently, as there were lots of places where I wanted images to be square, but there were also lots of ways for this to fail. In the end, an image-wrapper system made the most sense.
++ I fixed a bug with the 'load more' button. The logic behind it correctly provided more items... but the items weren't always in the same category, and the 'load more' button didn't remove itself when all the products were loaded. I removed this bug in commit c4503d2.
++ I accidentally introduced a bug myself by mistakenly removing the Javascript that made the Favourites button work while modifying other things about the page. Luckily I was able to reinstate it. In doing so, I discovered a more subtle bug pertaining to the Favourites status not being maintained when navigating to or from a product. This is now resolved.
++ Other than the image dimensions, the most pervasive bug was with the white overlay. By default, using z-index as -1 did not place it in the right place. I'm not sure why. In the end, it was easier to modify the z-indexes of various other things to ensure they were presented correctly.
 
 ## Code validation
 
 ### Lighthouse Report:
 ![lighthouse report](readme_docs/testcases/lighthouse.png "lighthouse report")
 
-### <a href="https://pep8ci.herokuapp.com/#" target="_blank">Code Institute Linter</a>
-![ci linter report](readme_docs/testcases/CI-linter.png "CI linter report")
+### Linter
+In this case, linting was done using the extension 'Flake8' for Visual Studio Code. Code has been refactored to include standard expectations, including double line breaks, removing white space, etc.
 
 ### <a href="https://jshint.com/" target="_blank">JSHint</a>
 ![jshint report](readme_docs/testcases/jshint.png "jshint report")
+
+Although other JavaScript appears in my site, the most-used JS is for the Quantity Increment/Decrement, which I've checked using JSHint.
 
 ### <a href="https://validator.w3.org/" target="_blank">W3C</a>
 ![w3c report](readme_docs/testcases/w3checker.png "w3c report")
@@ -152,7 +160,7 @@ This website has been deployed on Heroku, the deployment for which is available 
 
 To view the deployment on Heroku:
 
-+ Navigate to DEPLOYMENT ADDRESS
++ Navigate to https://foodshop-5f1ae0a958b9.herokuapp.com/
 
 To clone the repository from Github in your editor of choice:
 
@@ -182,4 +190,8 @@ Text for the site is original and is by the site's creator.
 All media on this site was sourced from [pxhere.com ](https://pxhere.com/) and is used free of royalty or copyright, and with permission, under the Creative Commons Zero (CC0) license. Individual image attribution is not required under that licence.
 
 ### Code Attribution
-Some code can be attributed to sources other than myself, such as the Stripe code; where code has been used from other sources, it has been explicitly called out within the code. Some similarities exist to the Code Institute project 'Boutique Ado', upon which this project was based. However, I have used exclusively up-to-date packages where possible, and updated throughout from Bootstrap 4 to Bootstrap 5, where the 'Boutique Ado' project used Bootstrap 4 and many outdated packages.
+Some code can be attributed to sources other than myself, such as the Stripe code; where code has been used from other sources, it has been explicitly called out within the code. Some similarities exist to the Code Institute project 'Boutique Ado', upon which this project was based. However, I have used exclusively up-to-date packages where possible, and updated throughout from Bootstrap 4 to Bootstrap 5, where the 'Boutique Ado' project used Bootstrap 4 and many outdated packages. Additionally, this site's functionality adds, among other things:
++ a Reviews model and interface
++ a Favourites model and interface
++ pagination to the 'all products' view 
++ a thumbnailing system
