@@ -12,17 +12,15 @@
                 <div class="my-5 product-detail-image">
                     <div class="image-wrapper">
                         {% if product.thumbnail %}
-                        <a href="{% url 'product_detail' product.id %}">
-                            <img class="card-img-top img-fluid" src="{{ product.thumbnail.url }}" alt="{{ product.name }}">
-                        </a>
+                            <a href="{{ product.image.url }}" data-lightbox="product-image" data-title="{{ product.name }}">
+                                <img class="card-img-top img-fluid" src="{{ product.thumbnail.url }}" alt="{{ product.name }}" id="product-image">
+                            </a>
                         {% elif product.image %}
-                        <a href="{% url 'product_detail' product.id %}">
-                            <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
-                        </a>
+                            <a href="{{ product.image.url }}" data-lightbox="product-image" data-title="{{ product.name }}">
+                                <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}" id="product-image">
+                            </a>
                         {% else %}
-                        <a href="{% url 'product_detail' product.id %}">
-                            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
-                        </a>
+                            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}" id="product-image">
                         {% endif %}
                     </div>
                 </div>
@@ -207,7 +205,7 @@
         {% endif %}
         
             
-        <!-- Review Lightbox -->
+        <!-- Review Modal -->
         <div id="reviewModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="reviewModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -334,5 +332,11 @@
         }
     });
    
+    // Initialize Lightbox2
+    lightbox.option({
+        'resizeDuration': 200,
+        'wrapAround': true,
+        'showImageNumberLabel': false
+    });
 </script>
 {% endblock %}
