@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MaxLengthValidator
+from django.conf import settings
+import boto3
 
 class Category(models.Model):
     name = models.CharField(max_length=254)
@@ -28,6 +30,21 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def delete(self, *args, **kwargs):
+        # Delete the image and thumbnail from S3
+        s3 = boto3.client('s3', 
+                          aws_access_key_id=settings.AWS_ACCESS_KEY_ID,
+                          aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY,
+                          region_name=settings.AWS_S3_REGION_NAME)
+        
+        if self.image:
+            s3.delete_object(Bucket=settings.AWS_STORAGE_BUCKET_NAME, Key=f"media/{self.image.name}")
+        
+        if self.thumbnail:
+            s3.delete_object(Bucket=settings.AWS_STORAGE_BUCKET_NAME, Key=f"media/{self.thumbnail.name}")
+        
+        super().delete(*args, **kwargs)
     
 class Favourite(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
