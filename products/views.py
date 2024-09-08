@@ -3,13 +3,17 @@ from django.db.models import Q
 from django.db.models.functions import Lower
 from django.contrib import messages
 from django.urls import reverse
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from .models import Product, Category, Favourite, Review
 from .forms import ProductForm
 from operator import attrgetter
 from django.http import JsonResponse
 from checkout.models import Order
 from .forms import ReviewForm
+
+def superuser_required(view_func):
+    decorated_view_func = user_passes_test(lambda u: u.is_superuser, login_url='home')(view_func)
+    return decorated_view_func
 
 def all_products(request):
     products = Product.objects.all().prefetch_related('categories')
@@ -71,16 +75,21 @@ def all_products(request):
 def product_detail(request, product_id):
     """ A view to show individual product details """
     product = get_object_or_404(Product, pk=product_id)
-     # Get related products (from the same category, excluding the current product)
+    # Get related products (from the same category, excluding the current product)
     related_products = Product.objects.filter(categories__in=product.categories.all()).exclude(id=product_id).distinct()[:4]
+    
+    # Check if the product is in the user's favorites
+    is_favorite = False
+    if request.user.is_authenticated:
+        is_favorite = Favourite.objects.filter(user=request.user, product=product).exists()
     
     context = {
         'product': product,
         'related_products': related_products,
+        'is_favorite': is_favorite,
     }
     return render(request, 'products/product_detail.html', context)
-
-@login_required
+@superuser_required
 def add_product(request):
     """ Add a product to the store """
     if not request.user.is_superuser:
@@ -105,7 +114,7 @@ def add_product(request):
 
     return render(request, template, context)
 
-@login_required
+@superuser_required
 def edit_product(request, product_id):
     """ Edit a product in the store """
     if not request.user.is_superuser:
@@ -133,7 +142,7 @@ def edit_product(request, product_id):
 
     return render(request, template, context)
 
-@login_required
+@superuser_required
 def delete_product(request, product_id):
     """ Delete a product from the store """
     if not request.user.is_superuser:
