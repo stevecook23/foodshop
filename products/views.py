@@ -11,6 +11,7 @@ from django.http import JsonResponse
 from checkout.models import Order
 from .forms import ReviewForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.template.loader import render_to_string
 
 def superuser_required(view_func):
     decorated_view_func = user_passes_test(lambda u: u.is_superuser, login_url='home')(view_func)
@@ -73,11 +74,13 @@ def all_products(request):
         products = paginator.page(1)
     except EmptyPage:
         if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-            return JsonResponse({'has_next': False})
+            return JsonResponse({'has_more': False})
         products = paginator.page(paginator.num_pages)
 
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        return render(request, 'products/product_list.html', {'products': products})
+        has_more = products.has_next()
+        html = render_to_string('products/product_list.html', {'products': products})
+        return JsonResponse({'html': html, 'has_more': has_more})
 
     context = {
         'products': products,
@@ -105,6 +108,7 @@ def product_detail(request, product_id):
         'is_favorite': is_favorite,
     }
     return render(request, 'products/product_detail.html', context)
+
 @superuser_required
 def add_product(request):
     """ Add a product to the store """

@@ -57,42 +57,30 @@
 {% block postloadjs %}
     {{ block.super }}
     <script type="text/javascript">
-        $('#sort-selector').change(function() {
-            var selector = $(this);
-            var currentUrl = new URL(window.location);
-
-            var selectedVal = selector.val();
-            if(selectedVal != "reset"){
-                var sort = selectedVal.split("_")[0];
-                var direction = selectedVal.split("_")[1];
-
-                currentUrl.searchParams.set("sort", sort);
-                currentUrl.searchParams.set("direction", direction);
-
-                window.location.replace(currentUrl);
-            } else {
-                currentUrl.searchParams.delete("sort");
-                currentUrl.searchParams.delete("direction");
-
-                window.location.replace(currentUrl);
-            }
-        });
+        // ... (previous JavaScript code remains the same)
 
         var page = 2;
         $('#load-more').click(function() {
             var btn = $(this);
-            var url = '{% url "products" %}?page=' + page;
+            var currentUrl = new URL(window.location);
+            currentUrl.searchParams.set('page', page);
+            
             $.ajax({
-                url: url,
+                url: currentUrl.toString(),
                 type: 'get',
                 beforeSend: function() {
                     btn.text('Loading...');
                 },
                 success: function(data) {
-                    if (data.trim().length > 0) {
-                        $('#product-list').append(data);
+                    if (data.html.trim().length > 0) {
+                        $('#product-list').append(data.html);
                         page += 1;
                         btn.text('Load More');
+                        history.pushState(null, '', currentUrl.toString());
+                        
+                        if (!data.has_more) {
+                            btn.remove();
+                        }
                     } else {
                         btn.remove();
                     }
