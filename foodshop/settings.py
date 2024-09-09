@@ -73,6 +73,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "allauth.account.middleware.AccountMiddleware",
+    'foodshop.middleware.AdminSecurityMiddleware',
 ]
 
 ROOT_URLCONF = 'foodshop.urls'
