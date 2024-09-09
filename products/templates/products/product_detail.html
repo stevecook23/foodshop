@@ -280,6 +280,15 @@
         console.error('Modal element not found');
     }
 
+    // Function to center the modal
+    function centerModal() {
+        $(modal).find('.modal-dialog').css({
+            'margin-top': function () {
+                return Math.max(0, ($(window).height() - $(this).height()) / 2);
+            }
+        });
+    }
+
     $(document).on('click', '.open-review', function(e) {
         e.preventDefault();
         const reviewId = $(this).data('review-id');
@@ -302,18 +311,12 @@
                     <p class="text-muted">By ${response.user} on ${response.created_at}</p>
                 `;
                 
+                // Center the modal before showing it
+                centerModal();
+                
                 const bootstrapModal = new bootstrap.Modal(modal);
                 bootstrapModal.show();
                 console.log('Modal should be visible now');
-
-                // Center the modal
-                $(modal).on('shown.bs.modal', function () {
-                    $(this).find('.modal-dialog').css({
-                        'margin-top': function () {
-                            return ($(window).height() - $(this).height()) / 2;
-                        }
-                    });
-                });
             },
             error: function(xhr, status, error) {
                 console.error("An error occurred:", xhr.status, error);
@@ -321,6 +324,9 @@
             }
         });
     });
+
+    // Recenter modal on window resize
+    $(window).on('resize', centerModal);
 
     // Add event listener for modal close button
     modal.querySelector('.close').addEventListener('click', function() {

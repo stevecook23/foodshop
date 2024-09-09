@@ -129,6 +129,7 @@ This section details manual testing that I undertook as part of my project. Beca
 + I fixed a bug with the 'load more' button. The logic behind it correctly provided more items... but the items weren't always in the same category, and the 'load more' button didn't remove itself when all the products were loaded. I removed this bug in commit c4503d2.
 + I accidentally introduced a bug myself by mistakenly removing the Javascript that made the Favourites button work while modifying other things about the page. Luckily I was able to reinstate it. In doing so, I discovered a more subtle bug pertaining to the Favourites status not being maintained when navigating to or from a product. This is now resolved.
 + Other than the image dimensions, the most pervasive bug was with the white overlay. By default, using z-index as -1 did not place it in the right place. I'm not sure why. In the end, it was easier to modify the z-indexes of various other things to ensure they were presented correctly.
++ Adding an amount more than 99 to the quantity on some pages and pressing enter reverts it to 98. Ultimately the code still allows you to add 99 of something, and this is a relatively niche end-user issue - I don't imagine that anyone using this site will actually want to add 99 of anything to their basket. As the code is working, I am reluctant to adjust it to work out why it reverts to 98 instead of 99 when enter is pressed.
 
 ## Code validation
 
@@ -190,7 +191,7 @@ Text for the site is original and is by the site's creator.
 All media on this site was sourced from [pxhere.com ](https://pxhere.com/) and is used free of royalty or copyright, and with permission, under the Creative Commons Zero (CC0) license. Individual image attribution is not required under that licence.
 
 ### Code Attribution
-Some code can be attributed to sources other than myself, such as the Stripe code; where code has been used from other sources, it has been explicitly called out within the code. Some similarities exist to the Code Institute project 'Boutique Ado', upon which this project was based. However, I have used exclusively up-to-date packages where possible, and updated throughout from Bootstrap 4 to Bootstrap 5, where the 'Boutique Ado' project used Bootstrap 4 and many outdated packages. Additionally, this site's functionality adds, among other things:
+Some code can be attributed to sources other than myself, such as the Stripe code; where code has been used from other sources, it has been explicitly called out within the code - for example, the custom middleware I am using to prevent non-admin access to /admin. Some similarities exist to the Code Institute project 'Boutique Ado', upon which this project was based. However, I have used exclusively up-to-date packages where possible, and updated throughout from Bootstrap 4 to Bootstrap 5, where the 'Boutique Ado' project used Bootstrap 4 and many outdated packages. Additionally, this site's functionality adds, among other things:
 + a Reviews model and interface
 + a Favourites model and interface
 + pagination to the 'all products' view 
