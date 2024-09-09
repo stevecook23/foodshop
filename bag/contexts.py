@@ -1,26 +1,37 @@
 """Contexts for the bag app."""
 from decimal import Decimal
 from django.conf import settings
-from django.shortcuts import get_object_or_404
+from .models import BasketItem
 from products.models import Product
 
 
 def bag_contents(request):
-
     bag_items = []
     total = 0
     product_count = 0
-    bag = request.session.get('bag', {})
 
-    for item_id, quantity in bag.items():
-        product = get_object_or_404(Product, pk=item_id)
-        total += quantity * product.price
-        product_count += quantity
-        bag_items.append({
-            'item_id': item_id,
-            'quantity': quantity,
-            'product': product,
-        })
+    if request.user.is_authenticated:
+        basket_items = BasketItem.objects.filter(user=request.user)
+        for item in basket_items:
+            total += item.quantity * item.product.price
+            product_count += item.quantity
+            bag_items.append({
+                'item_id': item.product.id,
+                'quantity': item.quantity,
+                'product': item.product,
+            })
+    else:
+        # For anonymous users
+        bag = request.session.get('bag', {})
+        for item_id, quantity in bag.items():
+            product = Product.objects.get(id=item_id)
+            total += quantity * product.price
+            product_count += quantity
+            bag_items.append({
+                'item_id': item_id,
+                'quantity': quantity,
+                'product': product,
+            })
 
     if total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)

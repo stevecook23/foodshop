@@ -6,6 +6,8 @@ from django.http import JsonResponse
 from django.conf import settings
 from django.template.loader import render_to_string
 from products.models import Product
+from django.contrib.auth.decorators import login_required
+from .models import BasketItem
 
 
 def view_bag(request):
@@ -13,64 +15,54 @@ def view_bag(request):
     return render(request, 'bag/bag.html')
 
 
+@login_required
 def add_to_bag(request, item_id):
     """ Add a quantity of the specified product to the shopping bag """
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
-    bag = request.session.get('bag', {})
 
-    if item_id in list(bag.keys()):
-        bag[item_id] += quantity
-        messages.success(request, f'Updated {product.name} quantity to {bag[item_id]}')
-    else:
-        bag[item_id] = quantity
-        messages.success(request, f'Added {product.name} to your bag')
+    basket_item, created = BasketItem.objects.get_or_create(
+        user=request.user,
+        product=product,
+        defaults={'quantity': quantity}
+    )
 
-    request.session['bag'] = bag
+    if not created:
+        basket_item.quantity += quantity
+        basket_item.save()
+
+    messages.success(request, f'Added {product.name} to your bag')
     return redirect(redirect_url)
 
 
+@login_required
 def adjust_bag(request, item_id):
     """Adjust the quantity of the specified product to the specified amount"""
-    try:
-        product = get_object_or_404(Product, pk=item_id)
-        quantity = int(request.POST.get('quantity', 0))
-        bag = request.session.get('bag', {})
-
+    product = get_object_or_404(Product, pk=item_id)
+    quantity = int(request.POST.get('quantity'))
+    
+    basket_item = BasketItem.objects.filter(user=request.user, product=product).first()
+    
+    if basket_item:
         if quantity > 0:
-            bag[item_id] = quantity
-            messages.info(request, f'Updated {product.name} quantity to {bag[item_id]}')
+            basket_item.quantity = quantity
+            basket_item.save()
         else:
-            bag.pop(item_id, None)
-            messages.info(request, f'Removed {product.name} from your bag')
-
-        request.session['bag'] = bag
-
-        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-            return JsonResponse(get_bag_data(request))
-        return redirect(reverse('view_bag'))
-
-    except Exception as e:
-        messages.error(request, f'Error updating bag: {str(e)}')
-        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-            return JsonResponse({'error': str(e)}, status=400)
-        return redirect(reverse('view_bag'))
+            basket_item.delete()
+    
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        return JsonResponse(get_bag_data(request))
+    return redirect(reverse('view_bag'))
 
 
+@login_required
 def remove_from_bag(request, item_id):
     """Remove the item from the shopping bag"""
     try:
         product = get_object_or_404(Product, pk=item_id)
-        bag = request.session.get('bag', {})
-
-        if item_id in bag:
-            bag.pop(item_id)
-            request.session['bag'] = bag
-            messages.success(request, f'Removed {product.name} from your bag')
-        else:
-            messages.error(request, f'Error removing item: {product.name} was not in your bag')
-
+        BasketItem.objects.filter(user=request.user, product=product).delete()
+        
         if request.headers.get('x-requested-with') == 'XMLHttpRequest':
             return JsonResponse(get_bag_data(request))
         return HttpResponse(status=200)
@@ -79,22 +71,10 @@ def remove_from_bag(request, item_id):
         messages.error(request, f'Error removing item: {str(e)}')
         return JsonResponse({'error': str(e)}, status=500)
 
-
 def get_bag_data(request):
-    bag_items = []
-    total = 0
-    product_count = 0
-    bag = request.session.get('bag', {})
-
-    for item_id, item_data in bag.items():
-        product = get_object_or_404(Product, pk=item_id)
-        total += item_data * product.price
-        product_count += item_data
-        bag_items.append({
-            'item_id': item_id,
-            'quantity': item_data,
-            'product': product,
-        })
+    basket_items = BasketItem.objects.filter(user=request.user)
+    total = sum(item.product.price * item.quantity for item in basket_items)
+    product_count = sum(item.quantity for item in basket_items)
 
     if total < settings.FREE_DELIVERY_THRESHOLD:
         delivery = total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
@@ -102,11 +82,11 @@ def get_bag_data(request):
     else:
         delivery = 0
         free_delivery_delta = 0
-
+    
     grand_total = delivery + total
-
+    
     context = {
-        'bag_items': bag_items,
+        'bag_items': basket_items,
         'total': total,
         'product_count': product_count,
         'delivery': delivery,
