@@ -1,24 +1,20 @@
 {% extends "account/base_entrance.html" %}
 {% load allauth i18n %}
-{% block head_title %}
-    {% trans "Signup" %}
-{% endblock head_title %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock head_title %}
+
 {% block content %}
     {% element h1 %}
         {% trans "Sign Up" %}
     {% endelement %}
-    {% setvar link %}
-        <a href="{{ login_url }}">
-        {% endsetvar %}
-        {% setvar end_link %}
-        </a>
-    {% endsetvar %}
+
     {% element p %}
-        {% blocktranslate %}Already have an account? Then please {{ link }}sign in{{ end_link }}.{% endblocktranslate %}
+        {% blocktranslate %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktranslate %}
     {% endelement %}
+
     {% if not SOCIALACCOUNT_ONLY %}
         {% url 'account_signup' as action_url %}
-            {% element form form=form method="post" action=action_url tags="entrance,signup" %}
+        {% element form form=form method="post" action=action_url tags="entrance,signup" %}
             {% slot body %}
                 {% csrf_token %}
                 {% for field in form %}
@@ -29,7 +25,7 @@
                             <small class="form-text text-muted">{{ field.help_text|safe }}</small>
                         {% endif %}
                         {% for error in field.errors %}
-                            <div class="invalid-feedback">
+                            <div class="invalid-feedback d-block error-message">
                                 {{ error }}
                             </div>
                         {% endfor %}
@@ -44,6 +40,7 @@
             {% endslot %}
         {% endelement %}
     {% endif %}
+
     {% if SOCIALACCOUNT_ENABLED %}
         {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
     {% endif %}
