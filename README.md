@@ -130,6 +130,8 @@ This section details manual testing that I undertook as part of my project. Beca
 + I accidentally introduced a bug myself by mistakenly removing the Javascript that made the Favourites button work while modifying other things about the page. Luckily I was able to reinstate it. In doing so, I discovered a more subtle bug pertaining to the Favourites status not being maintained when navigating to or from a product. This is now resolved.
 + Other than the image dimensions, the most pervasive bug was with the white overlay. By default, using z-index as -1 did not place it in the right place. I'm not sure why. In the end, it was easier to modify the z-indexes of various other things to ensure they were presented correctly.
 + Adding an amount more than 99 to the quantity on some pages and pressing enter reverts it to 98. Ultimately the code still allows you to add 99 of something, and this is a relatively niche end-user issue - I don't imagine that anyone using this site will actually want to add 99 of anything to their basket. As the code is working, I am reluctant to adjust it to work out why it reverts to 98 instead of 99 when enter is pressed.
++ After user feedback, I had a couple of small bugs to work out. One involved the modal for the reviews, which appeared at the top of the screen briefly before sliding down to the centre of the view. I've modified the JavaScript on product_detail.html so it no longer does that, with the side effect that it's slightly too low now. However, much like the previous point, this is a bug I am willing to let ride as the functionality otherwise perfect.
+
 
 ## Code validation
 

@@ -276,4 +276,4 @@ ACCOUNT_FORMS = {
 }
 
 # Debug
-DEBUG = True
+DEBUG = False
