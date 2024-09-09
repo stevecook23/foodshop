@@ -4,7 +4,7 @@ function handleQuantityChange(itemId, newQuantity) {
         type: 'POST',
         data: {
             'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val(),
-            'quantity': newQuantity
+            'quantity': Math.min(newQuantity, 99)
         },
         success: function(response) {
             location.reload();
@@ -23,11 +23,21 @@ $(document).ready(function() {
         var closestInput = $(this).closest('.input-group').find('.qty_input')[0];
         var currentValue = parseInt($(closestInput).val());
         if ($(this).hasClass('increment-qty')) {
-            var newValue = currentValue + 1;
+            var newValue = Math.min(currentValue + 1, 99);
         } else {
             var newValue = Math.max(1, currentValue - 1);
         }
         $(closestInput).val(newValue);
+    });
+
+    // Add change event handler for quantity input
+    $('.qty_input').change(function() {
+        var value = parseInt(this.value);
+        if (isNaN(value) || value < 1) {
+            this.value = 1;
+        } else if (value > 99) {
+            this.value = 99;
+        }
     });
 
     // Update bag when "Update" link is clicked
