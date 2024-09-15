@@ -1,7 +1,7 @@
 """Views for the products app"""
 from operator import attrgetter
-from django.http import JsonResponse
-from django.shortcuts import render, redirect, get_object_or_404, HttpResponse, HttpResponseForbidden
+from django.http import JsonResponse, HttpResponseForbidden
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.contrib import messages
