@@ -40,7 +40,7 @@
                     <td class="py-3 w-25">
                         <form class="form update-form">
                             <div class="form-group">
-                                <div class="input-group input-group-sm">
+                                <div class="input-group quantity-1 input-group-sm">
                                     <div class="input-group-prepend">
                                         <button class="decrement-qty btn btn-sm btn-black rounded-0" 
                                             data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
@@ -87,7 +87,7 @@
                     <p class="my-0"><strong>{{ item.product.name }}</strong></p>
                     <p class="my-0">Price: £{{ item.product.price }}</p>
                     <div class="mt-2">
-                        <div class="input-group input-group-sm">
+                        <div class="input-group quantity-1 input-group-sm">
                             <div class="input-group-prepend">
                                 <button class="decrement-qty btn btn-sm btn-black rounded-0" data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
                                     <span><i class="bi bi-dash"></i></span>

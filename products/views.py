@@ -220,7 +220,7 @@ def add_review(request, product_id):
 
 @login_required
 def edit_review(request, review_id):
-    review = get_object_or_404(Review, pk=review_id)
+    review = get_object_or_404(Review, pk=review_id, user=request.user)
     if request.method == 'POST':
         form = ReviewForm(request.POST, instance=review)
         if form.is_valid():
@@ -239,7 +239,7 @@ def edit_review(request, review_id):
 
 @login_required
 def delete_review(request, review_id):
-    review = get_object_or_404(Review, pk=review_id)
+    review = get_object_or_404(Review, pk=review_id, user=request.user)
     if request.user != review.user:
         return HttpResponse("You don't have permission to delete this review.", status=403)
     product_id = review.product.id
