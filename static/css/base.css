@@ -458,6 +458,10 @@ header.fixed-top {
     padding: 0.25rem;
 }
 
+.searchbar {
+    text-align: left !important;
+}
+
 /* Media Queries */
 @media (min-width: 1200px) {
     .container {
