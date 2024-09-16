@@ -21,7 +21,6 @@ def bag_contents(request):
                 'product': item.product,
             })
     else:
-        # For anonymous users
         bag = request.session.get('bag', {})
         for item_id, quantity in bag.items():
             product = Product.objects.get(id=item_id)
