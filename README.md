@@ -75,54 +75,87 @@ This page would have a place for registered and logged-in users to edit their ad
 + Additional software used to create this website includes Chrome for previewing, inspecting and bug testing
 
 ## Testing
-This section details manual testing that I undertook as part of my project. Because of the length of this section in text form, I have opted not to include screenshots of each test.
+This section details manual testing that I undertook as part of my project.
 
 ### Test Case: Navigation and Responsiveness
 + Click on each navigation link (Home, Products, About, Contact, etc.); each should lead to the correct page
 + Resize browser window from desktop to tablet to mobile sizes; layout should adjust appropriately
 + On mobile view, verify that the hamburger menu appears and functions correctly
 + Scroll through long pages; header should remain fixed at the top for easy navigation
+![navigation test](readme_docs/testcases/test1.png "navigation test")
 
 ### Test Case: Product Listings
 + Navigate to the Products page; all products should be visible and properly formatted
 + Use the category filter; only products from the selected category should display
 + Use the sort function (e.g., price low to high); products should reorder correctly
 + Click on a product; it should lead to the correct product detail page
+![listings test](readme_docs/testcases/test2.png "listing test")
 
 ### Test Case: Product Detail Page
 + Verify that all product information (name, price, description, image) is displayed correctly
 + Adjust the quantity using the + and - buttons; quantity should update accordingly
 + Click 'Add to Bag'; product should be added to the shopping bag
 + If logged in as admin, verify that 'Edit' and 'Delete' options are visible and functional
+![details test](readme_docs/testcases/test3.png "details test")
 
 ### Test Case: Shopping Bag
 + Add multiple items to the bag; all items should be visible in the bag
 + Adjust quantities in the bag; subtotal and grand total should update correctly
 + Remove an item from the bag; it should disappear and totals should update
 + Click 'Secure Checkout'; it should lead to the checkout page
+![bag test](readme_docs/testcases/test4.png "bag test")
 
 ### Test Case: Checkout Process
 + Fill out the checkout form; all required fields should be validated
 + Use an invalid credit card number; an error message should appear
 + Use a valid credit card number; the order should process successfully
 + After successful checkout, verify that a confirmation email is received
+![checkout test](readme_docs/testcases/test5.png "checkout test")
+
+![checkout test2](readme_docs/testcases/test6.png "checkout test2")
+
+![checkout test3](readme_docs/testcases/test7.png "checkout test3")
 
 ### Test Case: User Account
 + Register a new account; verify that the registration process works
 + Log in with the new account; should be redirected to the home page
 + Navigate to the profile page; personal information and order history should be visible
 + Update profile information; changes should be saved successfully
+![profile test](readme_docs/testcases/test8.png "profile test")
 
 ### Test Case: Admin Functionality
 + Log in as an admin user
 + Navigate to the product management page; should be able to add a new product
 + Edit an existing product; changes should be saved and reflected on the site
 + Delete a product; it should be removed from the product listings
+![management test](readme_docs/testcases/test9.png "management test")
 
 ### Test Case: Search Functionality
 + Use the search bar with a valid product name; relevant products should appear in results
 + Search with a category name; products from that category should be displayed
 + Perform an empty search; it should return all products or an appropriate message
+![search test](readme_docs/testcases/test10.png "search test")
+
+### Test Case: Review Functionality
++ Log in as a user
++ Navigate to any product
++ Add a review
++ Observe that the review is visible
++ Edit the review
++ Delete the review
++ Confirm that other reviews are visible but only yours can be edited or deleted
++ As a superuser, confirm that all reviews can be deleted or edited
+![review test](readme_docs/testcases/test11.png "review test")
+
+### Test Case: Favourites Functionality
++ Log in as a user
++ Navigate to any product
++ Click to add as a favourite
++ Ensure that the heart icon changes
++ Click again to remove
++ Add a favourite and navigate to 'My Favourites'
++ Confirm that all favourites are visible
+![favourites test](readme_docs/testcases/test12.png "favourites test")
 
 ### Bugs discovered
 + During development, the number one bug I encountered was to do with image dimensions. This is something that came up frequently, as there were lots of places where I wanted images to be square, but there were also lots of ways for this to fail. In the end, an image-wrapper system made the most sense.
@@ -131,7 +164,7 @@ This section details manual testing that I undertook as part of my project. Beca
 + Other than the image dimensions, the most pervasive bug was with the white overlay. By default, using z-index as -1 did not place it in the right place. I'm not sure why. In the end, it was easier to modify the z-indexes of various other things to ensure they were presented correctly.
 + Adding an amount more than 99 to the quantity on some pages and pressing enter reverts it to 98. Ultimately the code still allows you to add 99 of something, and this is a relatively niche end-user issue - I don't imagine that anyone using this site will actually want to add 99 of anything to their basket. As the code is working, I am reluctant to adjust it to work out why it reverts to 98 instead of 99 when enter is pressed.
 + After user feedback, I had a couple of small bugs to work out. One involved the modal for the reviews, which appeared at the top of the screen briefly before sliding down to the centre of the view. I've modified the JavaScript on product_detail.html so it no longer does that, with the side effect that it's slightly too low now. However, much like the previous point, this is a bug I am willing to let ride as the functionality otherwise perfect.
-
++ The last bug I chased around was one that I partly introduced myself by modifying the code. I realised that there was a difference in the way that authenticated users and guest users were storing their data, thanks to implementing orders being saved to the accounts. This meant that the session was not properly refreshed for logged-in users, but was for logged-out users. This meant several small changes which are detailed over the last three or four commits. It was very much a case of closing off one bug and accidentally opening another.
 
 ## Code validation
 
@@ -179,7 +212,7 @@ Now you have a copy of the source code and can start to work on it. Bear in mind
 To deploy the site locally on your machine, after you have cloned the repository from Github, please do the following:
 
 + Open your terminal
-+ Input: python3 app.py
++ Input: python3 manage.py runserver
 + You will see several lines of text, including 'Running on' and an address
 + Ctrl-click the address, or copy it into your browser of choice
 
@@ -196,5 +229,6 @@ All media on this site was sourced from [pxhere.com ](https://pxhere.com/) and i
 Some code can be attributed to sources other than myself, such as the Stripe code; where code has been used from other sources, it has been explicitly called out within the code - for example, the custom middleware I am using to prevent non-admin access to /admin. Some similarities exist to the Code Institute project 'Boutique Ado', upon which this project was based. However, I have used exclusively up-to-date packages where possible, and updated throughout from Bootstrap 4 to Bootstrap 5, where the 'Boutique Ado' project used Bootstrap 4 and many outdated packages. Additionally, this site's functionality adds, among other things:
 + a Reviews model and interface
 + a Favourites model and interface
-+ pagination to the 'all products' view 
-+ a thumbnailing system
++ Pagination to the 'all products' view via a 'load more' button to improve load times
++ A thumbnailing system for products to improve load times drastically
++ The ability for products to be in more than one category (for example in 'special offers' as well as 'beverages')
