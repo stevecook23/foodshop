@@ -30,6 +30,11 @@ def add_to_bag(request, item_id):
         if not created:
             basket_item.quantity += quantity
             basket_item.save()
+
+        # Update session
+        bag = request.session.get('bag', {})
+        bag[item_id] = basket_item.quantity
+        request.session['bag'] = bag
     else:
         bag = request.session.get('bag', {})
         if item_id in bag:
