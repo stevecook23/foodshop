@@ -1,6 +1,7 @@
 """Contexts for the bag app."""
 from decimal import Decimal
 from django.conf import settings
+from django.shortcuts import get_object_or_404
 from .models import BasketItem
 from products.models import Product
 
@@ -9,7 +10,7 @@ def bag_contents(request):
     bag_items = []
     total = 0
     product_count = 0
-
+    
     if request.user.is_authenticated:
         basket_items = BasketItem.objects.filter(user=request.user)
         for item in basket_items:
@@ -23,7 +24,7 @@ def bag_contents(request):
     else:
         bag = request.session.get('bag', {})
         for item_id, quantity in bag.items():
-            product = Product.objects.get(id=item_id)
+            product = get_object_or_404(Product, pk=item_id)
             total += quantity * product.price
             product_count += quantity
             bag_items.append({

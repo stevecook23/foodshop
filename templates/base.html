@@ -159,6 +159,11 @@
                 }
             });
         });
+
+    // Call this function after a successful order
+    if (window.location.pathname.includes('checkout_success')) {
+        updateBagDisplay();
+    }
     </script>
     {% endblock %}
 

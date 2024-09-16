@@ -10,6 +10,7 @@ from django.template.loader import render_to_string
 
 from products.models import Product
 from bag.contexts import bag_contents
+from bag.models import BasketItem
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 from .forms import OrderForm
@@ -142,6 +143,16 @@ def checkout_success(request, order_number):
             user_profile_form = UserProfileForm(profile_data, instance=profile)
             if user_profile_form.is_valid():
                 user_profile_form.save()
+                
+        # Clear the database-stored basket items
+        BasketItem.objects.filter(user=request.user).delete()
+        
+        # Clear the session-based bag
+        if 'bag' in request.session:
+            del request.session['bag']
+
+        # Ensure the session is saved
+        request.session.modified = True
 
     # Send the confirmation email
     cust_email = order.email

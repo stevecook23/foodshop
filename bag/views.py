@@ -12,6 +12,8 @@ from .models import BasketItem
 
 def view_bag(request):
     """ A view that renders the bag contents page """
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        return render(request, 'bag/bag_contents.html')
     return render(request, 'bag/bag.html')
 
 
